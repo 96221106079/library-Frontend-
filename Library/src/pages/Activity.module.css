@@ -1,0 +1,741 @@
+/* ============================================================
+   Activity.module.css — P2P Book Exchange Lifecycle Styles
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Layout ─────────────────────────────────────────────── */
+.container {
+  padding: 24px 32px;
+  width: 100%;
+  padding-bottom: 80px;
+  font-family: 'Outfit', sans-serif;
+  box-sizing: border-box;
+}
+
+.header {
+  margin-bottom: 36px;
+}
+
+.header h1 {
+  font-size: 30px;
+  font-weight: 900;
+  margin: 0;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 60%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.03em;
+}
+
+.header p {
+  color: #64748b;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+/* ── Tabs ────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  background: rgba(10, 18, 35, 0.5);
+  padding: 5px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tabBtn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.tabBtnActive {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(168, 85, 247, 0.12));
+  color: #a5b4fc;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.07);
+  border: 1px solid rgba(99,102,241,0.2);
+}
+
+.tabCount {
+  background: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.tabContent {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.emptyText {
+  text-align: center;
+  color: #475569;
+  padding: 40px;
+  font-style: italic;
+  grid-column: 1 / -1;
+}
+
+/* ── Empty State ─────────────────────────────────────────── */
+.emptyHero {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(30, 41, 59, 0.3);
+  border: 1px dashed rgba(148, 163, 184, 0.15);
+  border-radius: 24px;
+  margin-top: 24px;
+}
+
+.emptyIcon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.emptyHero h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #e2e8f0;
+}
+
+.emptyHero p {
+  color: #64748b;
+  margin: 0;
+}
+
+/* ── Sections ────────────────────────────────────────────── */
+.activeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sectionHeader h3 {
+  font-size: 14px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 2px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.count {
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  padding: 3px 12px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* ── Grid ────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+.card {
+  background: rgba(18, 28, 48, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 22px;
+  padding: 20px;
+  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1),
+              box-shadow 0.28s ease,
+              border-color 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.22);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(99,102,241,0.1);
+}
+
+.cardCompleted {
+  opacity: 0.85;
+}
+
+/* ── Card Main Row ───────────────────────────────────────── */
+.cardMain {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.bookImg {
+  width: 64px;
+  height: 84px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.bookTitle {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 800;
+  color: #f1f5f9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookAuthor {
+  margin: 0 0 10px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ── Type Badge ──────────────────────────────────────────── */
+.typeBadge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 99px;
+  display: inline-block;
+}
+
+.typeBadgeBuy {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.typeBadgeRent {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+/* ── Status Pills ────────────────────────────────────────── */
+.pendingPill {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.acceptedPill {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.completedPill {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.returnedPill {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: rgba(100, 116, 139, 0.15);
+  color: #94a3b8;
+  border: 1px solid rgba(100, 116, 139, 0.25);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.warningBadge {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.lateBadge {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.fineInfo {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #f87171;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Step Progress Bar ───────────────────────────────────── */
+.stepBar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 14px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.stepBar::-webkit-scrollbar {
+  display: none;
+}
+
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  position: relative;
+  min-width: 54px;
+}
+
+.stepDot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(100, 116, 139, 0.15);
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  border: 2px solid transparent;
+}
+
+.stepDotActive {
+  background: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12), 0 0 16px rgba(99, 102, 241, 0.4);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12), 0 0 16px rgba(99, 102, 241, 0.3); }
+  50%       { box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.08), 0 0 24px rgba(99, 102, 241, 0.5); }
+}
+
+.stepDotDone {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border-color: #10b981;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+}
+
+.stepLabel {
+  font-size: 9px;
+  font-weight: 700;
+  color: #334155;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.stepLabelActive {
+  color: #818cf8;
+}
+
+.stepLine {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: rgba(100, 116, 139, 0.15);
+  z-index: 0;
+}
+
+.stepLineDone {
+  background: linear-gradient(90deg, #10b981 0%, rgba(16, 185, 129, 0.3) 100%);
+}
+
+.rejectedBar {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* ── Card Actions ────────────────────────────────────────── */
+.cardActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Borrower Waiting State ──────────────────────────────── */
+.waitingBox {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.waitingIcon {
+  font-size: 28px;
+  animation: sway 2s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.waitingTitle {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+.waitingMeta {
+  margin: 0;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ── Owner Incoming Request ──────────────────────────────── */
+.incomingHeader {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: rgba(99, 102, 241, 0.06);
+  border: 1px solid rgba(99, 102, 241, 0.12);
+  border-radius: 12px;
+}
+
+.requesterAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.incomingName {
+  margin: 0 0 3px;
+  font-size: 13px;
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.incomingDate {
+  margin: 0;
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* Response Buttons */
+.responseGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.acceptBtn {
+  flex: 1;
+  padding: 11px 12px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Outfit', sans-serif;
+}
+
+.acceptBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
+}
+
+.rejectBtn {
+  flex: 1;
+  padding: 11px 12px;
+  background: rgba(239, 68, 68, 0.08);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Outfit', sans-serif;
+}
+
+.rejectBtn:hover {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+/* ── OTP Show Box (Borrower) ─────────────────────────────── */
+.otpShowBox {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.07), rgba(168, 85, 247, 0.05));
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(99, 102, 241, 0); }
+  50% { box-shadow: 0 0 28px rgba(99, 102, 241, 0.22); }
+}
+
+.otpShowLabel {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+
+.otpCodeDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.otpCode {
+  font-size: 36px;
+  font-weight: 900;
+  color: #6366f1;
+  letter-spacing: 8px;
+  background: rgba(99, 102, 241, 0.1);
+  padding: 12px 24px;
+  border-radius: 14px;
+  border: 2px dashed rgba(99, 102, 241, 0.4);
+  display: inline-block;
+}
+
+.otpHint {
+  font-size: 11px;
+  color: #64748b;
+  margin: 0;
+}
+
+.otpPending {
+  font-size: 12px;
+  color: #94a3b8;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ── OTP Verify Box (Owner) ──────────────────────────────── */
+.otpVerifyBox {
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.otpVerifyLabel {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+.otpInputGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.otpInput {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: #fff;
+  text-align: center;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 4px;
+  outline: none;
+  font-family: 'Outfit', sans-serif;
+  transition: border-color 0.2s;
+}
+
+.otpInput:focus {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.05);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.verifyBtn {
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  font-family: 'Outfit', sans-serif;
+}
+
+.verifyBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
+}
+
+.verifyBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Completed Note ──────────────────────────────────────── */
+.completedNote {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0 0 10px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ── Return Button ───────────────────────────────────────── */
+.returnBtn {
+  width: 100%;
+  padding: 11px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Outfit', sans-serif;
+}
+
+.returnBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Track Button ────────────────────────────────────────── */
+.trackBtn {
+  width: 100%;
+  padding: 10px;
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Outfit', sans-serif;
+}
+
+.trackBtn:hover {
+  background: rgba(59, 130, 246, 0.18);
+  border-color: rgba(59, 130, 246, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+/* ── Loading ─────────────────────────────────────────────── */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  color: #64748b;
+  font-size: 18px;
+  font-weight: 700;
+}

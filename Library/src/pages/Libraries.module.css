@@ -1,0 +1,808 @@
+/* ============================================
+   Libraries.module.css – Dark theme styles
+   ============================================ */
+
+/* ── Page shell ──────────────────────────────────────────────────── */
+.page {
+  min-height: 100%;
+  padding: 24px 28px 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: #e2e8f0;
+  font-family: "Inter", system-ui, sans-serif;
+  box-sizing: border-box;
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ── Loader ─────────────────────────────────────────────────────── */
+.loaderWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 60px 20px;
+}
+
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(99, 102, 241, 0.2);
+  border-top-color: #818cf8;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loaderText {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ── Error card ──────────────────────────────────────────────────── */
+.errorCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 16px;
+  padding: 20px 24px;
+  color: #fca5a5;
+  font-size: 14px;
+}
+
+.errorIcon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+/* ── Map ─────────────────────────────────────────────────────────── */
+.mapWrapper {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.map {
+  height: 380px;
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* Popup override */
+.popupContent {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #1e293b;
+}
+
+/* ── Cards section ───────────────────────────────────────────────── */
+/* ── Cards section ───────────────────────────────────────────────── */
+.cardsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ── Individual card ─────────────────────────────────────────────── */
+.card {
+  background: rgba(30, 41, 59, 0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.activeCard {
+  border: 2px solid #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.cardBody {
+  padding: 24px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.libName {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  flex: 1;
+}
+
+.distBadge {
+  background: rgba(99, 102, 241, 0.2);
+  color: #818cf8;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.libAddress {
+  color: #94a3b8;
+  font-size: 13px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.cardActions {
+  display: flex;
+  gap: 10px;
+}
+
+.routeBtn {
+  flex: 1.2;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.booksActionBtn {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* NAVIGATION OVERLAY (GOOGLE MAPS STYLE) */
+.navOverlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  z-index: 2000;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+}
+
+.navCard {
+  width: 100%;
+  max-width: 500px;
+  background: #1e293b;
+  border-radius: 28px;
+  box-shadow: 0 -20px 40px rgba(0,0,0,0.4);
+  pointer-events: auto;
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.navHeader {
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navTitleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navLibName {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.closeNav {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+}
+
+.navAddress {
+  margin: 4px 0 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.navStats {
+  display: flex;
+  padding: 20px 24px;
+  background: rgba(0, 0, 0, 0.2);
+  gap: 40px;
+}
+
+.navStat {
+  display: flex;
+  flex-direction: column;
+}
+
+.statLabel {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #64748b;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.statVal {
+  font-size: 20px;
+  font-weight: 800;
+  color: #3b82f6;
+}
+
+.navActions {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.googleMapsBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #fff;
+  color: #1e293b;
+  border: none;
+  padding: 16px;
+  border-radius: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.googleMapsBtn:active { transform: scale(0.98); }
+
+.booksBtnSecondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  border-radius: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* OSM NOTICE CARD */
+.osmNoticeCard {
+  display: flex;
+  gap: 16px;
+  background: rgba(99, 102, 241, 0.1);
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.osmIcon {
+  font-size: 28px;
+}
+
+.osmInfo h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  color: #a5b4fc;
+}
+
+.osmInfo p {
+  margin: 0;
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+
+/* ── Updating badge ──────────────────────────────────────────────── */
+.updatingBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(99, 102, 241, 0.1);
+  padding: 6px 14px;
+  border-radius: 100px;
+  color: #818cf8;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────── */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 72px 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(99, 102, 241, 0.2);
+  border-radius: 24px;
+  text-align: center;
+}
+.emptyIcon  { font-size: 48px; }
+.emptyTitle { font-size: 18px; font-weight: 700; margin: 0; color: #cbd5e1; }
+.emptyText  { font-size: 14px; color: #64748b; margin: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   BOOKS MODAL
+   ═══════════════════════════════════════════════════════════════════ */
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal {
+  background: #0f172a;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.04);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp { from { transform: translateY(24px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  flex-shrink: 0;
+}
+
+.modalTitle {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, #a5b4fc, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modalSubtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 4px 0 0;
+}
+
+.modalClose {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  color: #94a3b8;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+.modalClose:hover { background: rgba(239,68,68,0.15); color: #fca5a5; border-color: rgba(239,68,68,0.3); }
+
+.modalBody {
+  overflow-y: auto;
+  padding: 20px 28px 28px;
+  flex: 1;
+}
+
+/* ── Info notice ─────────────────────────────────────────────────── */
+.infoNotice {
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 14px;
+  padding: 16px 20px;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── Book grid ───────────────────────────────────────────────────── */
+.bookGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bookCard {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 16px;
+  transition: border-color 0.2s;
+}
+.bookCard:hover { border-color: rgba(99,102,241,0.3); }
+
+/* Book cover thumbnail */
+.bookCover {
+  width: 64px;
+  height: 88px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(99,102,241,0.12);
+}
+.bookImg { width: 100%; height: 100%; object-fit: cover; }
+.bookPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+/* Book info */
+.bookInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.bookTitle  { font-size: 15px; font-weight: 700; color: #e2e8f0; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bookAuthor { font-size: 12px; color: #64748b; margin: 0; }
+.bookTag    { display: inline-block; font-size: 11px; background: rgba(99,102,241,0.15); color: #818cf8; border-radius: 6px; padding: 2px 8px; margin-top: 2px; }
+
+.bookPrices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.priceTag {
+  font-size: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 2px 8px;
+  color: #94a3b8;
+}
+
+.availBadge { margin-top: 4px; }
+.badgeAvail { font-size: 11px; color: #34d399; font-weight: 600; }
+.badgeNone  { font-size: 11px; color: #f87171; font-weight: 600; }
+
+/* Book action buttons */
+.bookActions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.actionBtn {
+  border: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s, transform 0.15s;
+  letter-spacing: 0.2px;
+}
+.actionBtn:disabled { opacity: 0.45; cursor: not-allowed; }
+.actionBtn:not(:disabled):active { transform: scale(0.95); }
+
+.rentBtn {
+  background: linear-gradient(135deg, #6366f1, #818cf8);
+  color: #fff;
+}
+.rentBtn:not(:disabled):hover { background: linear-gradient(135deg, #4f46e5, #6366f1); }
+
+.buyBtn {
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: #fff;
+}
+.buyBtn:not(:disabled):hover { background: linear-gradient(135deg, #047857, #059669); }
+
+.actionSuccess { font-size: 12px; color: #34d399; font-weight: 600; margin: 0; text-align: center; max-width: 90px; }
+.actionError   { font-size: 12px; color: #f87171; font-weight: 600; margin: 0; text-align: center; max-width: 90px; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   CONFIRM PANEL (Step 2)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.backBtn {
+  background: none;
+  border: none;
+  color: #818cf8;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 0 6px;
+  display: block;
+}
+.backBtn:hover { color: #a5b4fc; }
+
+.confirmPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.confirmBook {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.2);
+  border-radius: 16px;
+  padding: 16px 20px;
+}
+.confirmIcon  { font-size: 36px; }
+.confirmTitle { font-size: 17px; font-weight: 700; color: #e2e8f0; margin: 0; }
+.confirmAuthor{ font-size: 13px; color: #64748b; margin: 4px 0 0; }
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.infoLabel { color: #64748b; font-weight: 600; }
+.infoVal   { color: #e2e8f0; text-align: right; max-width: 65%; }
+
+/* Location tracker strip */
+.locationTrack {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(99,102,241,0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(99,102,241,0.15);
+}
+.locDot {
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.locUser { color: #60a5fa; background: rgba(96,165,250,0.08); }
+.locLib  { color: #f472b6; background: rgba(244,114,182,0.08); }
+.locLine {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #60a5fa, #818cf8, #f472b6);
+  position: relative;
+}
+.locLine::after {
+  content: "→";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: #818cf8;
+  background: #0f172a;
+  padding: 0 4px;
+}
+
+.confirmBtn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #6366f1, #818cf8);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+  letter-spacing: 0.3px;
+  margin-top: 8px;
+}
+.confirmBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+.confirmBtn:not(:disabled):hover { filter: brightness(1.1); }
+.confirmBtn:not(:disabled):active { transform: scale(0.98); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   OTP PANEL (Step 3)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.otpPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  text-align: center;
+}
+
+.otpHeader { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.otpIcon   { font-size: 44px; }
+.otpTitle  { font-size: 18px; font-weight: 800; color: #e2e8f0; margin: 0; }
+.otpSub    { font-size: 13px; color: #64748b; margin: 0; }
+
+.otpDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15));
+  border: 1.5px solid rgba(129,140,248,0.4);
+  border-radius: 20px;
+  padding: 24px 40px;
+  width: 100%;
+}
+.otpValue {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 10px;
+  color: #a5b4fc;
+  font-family: "Courier New", monospace;
+}
+.otpLabel { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+.distancePill {
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.2);
+  border-radius: 100px;
+  padding: 8px 20px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+.distancePill strong { color: #818cf8; }
+
+.otpDivider {
+  font-size: 12px;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  width: 100%;
+}
+.otpDivider::before, .otpDivider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+}
+.otpDivider::before { left: 0; }
+.otpDivider::after  { right: 0; }
+
+.otpInputWrap { width: 100%; display: flex; flex-direction: column; gap: 6px; }
+.otpInput {
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  color: #e2e8f0;
+  padding: 14px;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Courier New", monospace;
+  transition: border-color 0.2s;
+}
+.otpInput:focus { border-color: #818cf8; }
+.otpErr { font-size: 13px; color: #f87171; margin: 0; text-align: center; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   SUCCESS PANEL (Step 4)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.successPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  padding: 12px 0;
+}
+.successIcon  { font-size: 64px; animation: pop 0.4s ease; }
+@keyframes pop { 0% { transform: scale(0.5); opacity: 0; } 70% { transform: scale(1.15); } 100% { transform: scale(1); opacity: 1; } }
+.successTitle { font-size: 22px; font-weight: 800; color: #34d399; margin: 0; }
+.successSub   { font-size: 14px; color: #94a3b8; margin: 0; line-height: 1.6; }
+
+.dueDatePill {
+  background: rgba(52,211,153,0.08);
+  border: 1px solid rgba(52,211,153,0.25);
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 13px;
+  color: #6ee7b7;
+}
+.dueDatePill strong { color: #34d399; }

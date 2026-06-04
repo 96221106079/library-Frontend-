@@ -1,0 +1,51 @@
+.section {
+  padding: 24px 16px 8px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.02em;
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #64748b;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.scrollContainer {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scrollbar-width: none;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.skeleton,
+.empty {
+  width: 100%;
+  padding: 40px;
+  text-align: center;
+  background: #f8fafc;
+  border-radius: 20px;
+  border: 1.5px dashed #e2e8f0;
+  color: #94a3b8;
+  font-size: 0.85rem;
+}

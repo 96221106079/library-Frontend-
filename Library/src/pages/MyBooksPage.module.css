@@ -1,0 +1,334 @@
+.pageContainer {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.pageHeader h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pageHeader p {
+  font-size: 1.1rem;
+  color: #94a3b8;
+}
+
+/* Card Layout */
+.cardLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.bookCard {
+  background: linear-gradient(145deg, #1e293b, #151e2e);
+  border-radius: 1.25rem;
+  border: 1px solid #334155;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.bookCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15);
+  border-color: #3b82f6;
+}
+
+/* Header Area */
+.cardHeader {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.imgContainer {
+  flex-shrink: 0;
+  width: 100px;
+  height: 140px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.bookImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bookInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bookTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  color: #f8fafc;
+}
+
+.bookAuthor {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0 0 0.5rem;
+}
+
+.bookPrice {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #10b981;
+  margin: 0 0 0.5rem;
+}
+
+/* Badges */
+.statusBadge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  align-self: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.available { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+.borrowed { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); }
+.rented { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+.sold { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+.defaultStatus { background: #334155; color: #cbd5e1; }
+
+/* Ratings */
+.ratingInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avgText {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.starRating {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: 1.1rem;
+  color: #475569;
+  transition: color 0.2s, transform 0.1s;
+}
+
+.star:hover { transform: scale(1.1); }
+.starFilled { color: #f59e0b; }
+
+/* Action Buttons */
+.actionsBox {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.actionBtn {
+  flex: 1;
+  padding: 0.85rem;
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.actionBtn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.borrowBtn {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+}
+
+.rentBtn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);
+}
+
+/* Dividers */
+.divider {
+  height: 2px;
+  background: #334155;
+  margin: 0 -1.5rem 1.5rem;
+}
+
+.dividerSm {
+  height: 1px;
+  background: #334155;
+  margin: 1.25rem 0;
+}
+
+/* Interactions Box */
+.interactionsBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* Review Section */
+.reviewForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.reviewInput {
+  width: 100%;
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  resize: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.reviewInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.submitBtn {
+  align-self: flex-end;
+  background: transparent;
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submitBtn:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.reviewItem {
+  background: rgba(15, 23, 42, 0.5);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border-left: 2px solid #3b82f6;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.reviewItem strong { color: #f8fafc; }
+
+/* Comment Section */
+.commentList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.commentList::-webkit-scrollbar { width: 4px; }
+.commentList::-webkit-scrollbar-thumb { background: #475569; border-radius: 2px; }
+
+.commentItem {
+  font-size: 0.85rem;
+  padding: 0.5rem;
+  background: #0f172a;
+  border-radius: 0.5rem;
+}
+
+.commentUser { font-weight: 700; color: #8b5cf6; }
+.commentMsg { color: #e2e8f0; }
+.commentTime {
+  display: block;
+  font-size: 0.65rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+}
+
+.commentInput {
+  width: 100%;
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 2rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.commentInput:focus {
+  outline: none;
+  border-color: #8b5cf6;
+}
+
+/* Utilities */
+.loader, .errorBox, .emptyState {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.2rem;
+  color: #94a3b8;
+}
+
+.errorBox { color: #ef4444; }

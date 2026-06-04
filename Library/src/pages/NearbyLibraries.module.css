@@ -1,0 +1,146 @@
+.page {
+  min-height: 100vh;
+  background: #fdfbff;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 16px;
+  background: #fff;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.headerTitleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title { font-size: 1.2rem; font-weight: 800; color: #1e293b; margin: 0; }
+.subtitle { font-size: 0.8rem; color: #64748b; margin-top: 4px; }
+
+.toggleGroup {
+  display: flex;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.toggleGroup button {
+  padding: 6px 14px;
+  border: none;
+  background: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.toggleGroup .activeToggle {
+  background: #fff;
+  color: #8b1874;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* List View */
+.listContainer {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.libListItem {
+  background: #fff;
+  border: 1px solid #f3f4f6;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.libInfo { flex: 1; }
+.libInfo h4 { margin: 0 0 4px; font-size: 1rem; color: #1e293b; }
+.libDist { font-size: 0.75rem; font-weight: 700; color: #8b1874; margin: 0 0 2px; }
+.libAddr { font-size: 0.75rem; color: #94a3b8; margin: 0; }
+
+.viewBooksBtn {
+  background: #8b1874;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.viewBooksBtn:active { transform: scale(0.95); }
+
+/* Map View */
+.mapContainer { flex: 1; min-height: 400px; }
+.map { height: 100%; width: 100%; }
+
+/* Inventory Slide Up */
+.inventorySection {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1500;
+  padding: 20px;
+  padding-bottom: 90px;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+  padding-bottom: 10px;
+}
+
+.sectionHeader h3 { font-size: 1.1rem; font-weight: 800; color: #1e293b; margin: 0; }
+.closeBtn { background: #f1f5f9; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-weight: bold; }
+
+.bookGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.emptyState, .emptyBooks {
+  text-align: center;
+  padding: 60px 20px;
+  color: #94a3b8;
+}
+
+.emptyIcon { font-size: 3rem; margin-bottom: 16px; display: block; }
+
+.overlayLoader {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #8b1874;
+}

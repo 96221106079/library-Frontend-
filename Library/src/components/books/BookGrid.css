@@ -1,0 +1,24 @@
+/* Responsive Grid for Book Cards */
+
+.premium-book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+/* Tablet Layout: 2 Cards per row */
+@media (max-width: 1024px) {
+  .premium-book-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Mobile Layout: 1 Card per row */
+@media (max-width: 600px) {
+  .premium-book-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

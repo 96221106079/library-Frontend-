@@ -1,0 +1,529 @@
+/* Premium Glassmorphic Book Details Modal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(4, 6, 12, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+  animation: fadeInModal 0.3s ease;
+}
+
+.modal-content {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow-y: auto;
+  animation: slideUpModal 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+  font-size: 16px;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  display: flex;
+  padding: 40px;
+  gap: 40px;
+}
+
+/* Left Side - Image */
+.modal-left {
+  flex: 1;
+  max-width: 320px;
+}
+
+.modal-cover-wrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  background: #0b0f19;
+  width: 100%;
+}
+
+.modal-cover-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.modal-cover-img:hover {
+  transform: scale(1.02);
+}
+
+.modal-cover-fallback {
+  width: 100%;
+  aspect-ratio: 2/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+}
+
+/* Right Side - Details */
+.modal-right {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.modal-author {
+  font-size: 16px;
+  color: #94a3b8;
+  margin: 0 0 20px 0;
+  font-weight: 500;
+}
+
+.modal-tags-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.modal-tag {
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.modal-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.status-available {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-other {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+/* Prices Section */
+.modal-prices-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.modal-price-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-label {
+  font-size: 11px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.price-value-buy {
+  font-size: 24px;
+  font-weight: 800;
+  color: #10b981;
+  margin: 0;
+}
+
+.price-value-rent {
+  font-size: 24px;
+  font-weight: 800;
+  color: #6366f1;
+  margin: 0;
+}
+
+.price-value-na {
+  font-size: 16px;
+  font-weight: 600;
+  color: #475569;
+  margin: 0;
+  padding-top: 4px;
+}
+
+.price-duration-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Action Buttons */
+.modal-action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.btn-modal-buy {
+  flex: 1;
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.2);
+}
+
+.btn-modal-buy:hover {
+  background: #059669;
+}
+
+.btn-modal-buy:active {
+  transform: scale(0.98);
+}
+
+.btn-modal-rent {
+  flex: 1;
+  background: #6366f1;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.2);
+}
+
+.btn-modal-rent:hover {
+  background: #4f46e5;
+}
+
+.btn-modal-rent:active {
+  transform: scale(0.98);
+}
+
+/* Tabs Section */
+.modal-tabs-header {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 20px;
+}
+
+.modal-tab-btn {
+  padding: 10px 20px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.modal-tab-btn:hover {
+  color: #ffffff;
+}
+
+.modal-tab-btn.active {
+  color: #818cf8;
+  border-bottom-color: #818cf8;
+}
+
+.modal-tab-content {
+  flex: 1;
+}
+
+/* Reviews Styles */
+.review-form {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 24px;
+}
+
+.review-form h4 {
+  margin: 0 0 16px;
+  font-size: 15px;
+  color: #f8fafc;
+}
+
+.review-textarea {
+  width: 100%;
+  height: 80px;
+  margin-top: 16px;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
+  padding: 12px;
+  outline: none;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.review-textarea:focus {
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+.btn-post-review {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #6366f1;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-post-review:hover:not(:disabled) {
+  background: #4f46e5;
+}
+
+.btn-post-review:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.review-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.review-header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.review-user {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.review-text {
+  margin: 0;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+/* Confirmation Overlay */
+.modal-confirm-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 30, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  z-index: 100;
+  border-radius: 24px;
+  animation: fadeInModal 0.2s ease;
+}
+
+.confirm-card {
+  max-width: 420px;
+  width: 100%;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.confirm-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.confirm-book-title {
+  font-size: 18px;
+  color: #f8fafc;
+  margin: 0 0 16px;
+  font-weight: 700;
+}
+
+.confirm-price-display {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.confirm-price-display.buy {
+  color: #10b981;
+}
+
+.confirm-price-display.rent {
+  color: #6366f1;
+}
+
+.confirm-owner {
+  font-size: 14px;
+  color: #94a3b8;
+  margin-bottom: 32px;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-confirm-cancel {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 14px;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-confirm-cancel:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-confirm-action {
+  flex: 1.5;
+  background: #6366f1;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  color: #ffffff;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-confirm-action.buy {
+  background: #10b981;
+}
+
+.btn-confirm-action.buy:hover {
+  background: #059669;
+}
+
+.btn-confirm-action.rent {
+  background: #6366f1;
+}
+
+.btn-confirm-action.rent:hover {
+  background: #4f46e5;
+}
+
+.btn-confirm-action:active {
+  transform: scale(0.98);
+}
+
+.btn-confirm-action:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpModal {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .modal-body {
+    flex-direction: column;
+    padding: 24px;
+    gap: 24px;
+  }
+  .modal-left {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .modal-cover-wrapper {
+    max-width: 240px;
+  }
+  .modal-prices-section {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
