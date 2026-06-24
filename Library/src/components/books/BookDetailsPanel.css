@@ -69,7 +69,7 @@
 .panel-title {
   font-size: 22px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #0f172a;
   margin: 0 0 4px 0;
   line-height: 1.25;
 }
@@ -124,7 +124,7 @@
 /* ── Tabs ────────────────────────────── */
 .panel-tabs-header {
   display: flex;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   margin-bottom: 16px;
 }
 
@@ -219,7 +219,7 @@
 .btn-panel-buy {
   width: 100%;
   background: linear-gradient(135deg, #00D084 0%, #00A86B 100%);
-  color: #FFFFFF;
+  color: #0f172a;
   border: none;
   border-radius: 14px;
   padding: 14px;
@@ -240,7 +240,7 @@
 .btn-panel-rent {
   width: 100%;
   background: linear-gradient(135deg, #7C4DFF 0%, #651FFF 100%);
-  color: #FFFFFF;
+  color: #0f172a;
   border: none;
   border-radius: 14px;
   padding: 14px;

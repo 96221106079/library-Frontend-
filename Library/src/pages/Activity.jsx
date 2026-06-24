@@ -8,8 +8,20 @@ import styles from "./Activity.module.css";
 // Activity.jsx — Refined P2P & Rental Dashboard
 // ============================================================
 
-const BUY_STEPS = ["Request", "Accepted", "Verified", "Completed"];
-const RENT_STEPS = ["Requested", "Accepted", "Verified", "Rented", "Returned", "Completed"];
+const BUY_STEPS = [
+  { label: "Requested", icon: "📩" },
+  { label: "Accepted",  icon: "🤝" },
+  { label: "Verified",  icon: "🔐" },
+  { label: "Completed",icon: "🎉" },
+];
+const RENT_STEPS = [
+  { label: "Requested", icon: "📩" },
+  { label: "Accepted",  icon: "🤝" },
+  { label: "Verified",  icon: "🔐" },
+  { label: "Rented",    icon: "📖" },
+  { label: "Returned",  icon: "↩️" },
+  { label: "Completed", icon: "🎉" },
+];
 const STATUS_TO_STEP = {
   REQUESTED: 0,
   ACCEPTED: 1,
@@ -27,19 +39,47 @@ const StepBar = ({ status, type }) => {
   const steps = isRent ? RENT_STEPS : BUY_STEPS;
   const currentStep = STATUS_TO_STEP[normStatus] ?? 0;
 
-  if (normStatus === "REJECTED") return <div className={styles.rejectedBar}>✕ Request Rejected</div>;
-  
+  if (normStatus === "REJECTED") return (
+    <div className={styles.rejectedBar}>
+      <span className={styles.rejectedIcon}>✕</span>
+      Request Rejected
+    </div>
+  );
+
+  const progressPct = steps.length > 1 ? (currentStep / (steps.length - 1)) * 100 : 100;
+
   return (
-    <div className={styles.stepBar}>
-      {steps.map((label, i) => (
-        <div key={i} className={styles.stepItem}>
-          <div className={`${styles.stepDot} ${i <= currentStep ? styles.stepDotActive : ""} ${i < currentStep ? styles.stepDotDone : ""}`}>
-            {i < currentStep ? "✓" : i + 1}
-          </div>
-          <span className={`${styles.stepLabel} ${i <= currentStep ? styles.stepLabelActive : ""}`}>{label}</span>
-          {i < steps.length - 1 && <div className={`${styles.stepLine} ${i < currentStep ? styles.stepLineDone : ""}`} />}
-        </div>
-      ))}
+    <div className={styles.stepBarWrapper}>
+      {/* Continuous track + animated fill */}
+      <div className={styles.stepTrack}>
+        <div className={styles.stepTrackFill} style={{ width: `${progressPct}%` }} />
+      </div>
+
+      <div className={styles.stepBar}>
+        {steps.map(({ label, icon }, i) => {
+          const isDone   = i < currentStep;
+          const isActive = i === currentStep;
+          const isPending = i > currentStep;
+          return (
+            <div key={i} className={styles.stepItem}>
+              <div className={[
+                styles.stepDot,
+                isDone   ? styles.stepDotDone   : "",
+                isActive ? styles.stepDotActive : "",
+                isPending? styles.stepDotPending: "",
+              ].join(" ")}>
+                {isDone ? <span className={styles.checkMark}>✓</span> : <span className={styles.stepIcon}>{icon}</span>}
+                {isActive && <span className={styles.pulseRing} />}
+              </div>
+              <span className={[
+                styles.stepLabel,
+                isDone   ? styles.stepLabelDone   : "",
+                isActive ? styles.stepLabelActive : "",
+              ].join(" ")}>{label}</span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

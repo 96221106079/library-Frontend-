@@ -231,7 +231,7 @@ const BookDetailsModal = ({ book, onClose, onActionComplete, initialAction }) =>
                       📚 From Library Collection
                     </div>
                   )}
-                  <p style={{ margin: 0, fontSize: '14px', color: '#cbd5e1', lineHeight: '1.6' }}>
+                  <p style={{ margin: 0, fontSize: '14px', color: '#334155', lineHeight: '1.6' }}>
                     {book.description || 
                       (displayBuy && displayRent 
                         ? 'This book is available for both purchase and rent.'
@@ -301,7 +301,7 @@ const BookDetailsModal = ({ book, onClose, onActionComplete, initialAction }) =>
               
               {action === 'rent' && (
                 <>
-                  <p className="confirm-price-display rent">₹{book.rentPrice} <span style={{fontSize: '14px', color: '#94a3b8', fontWeight: 500}}>/ {book.rentDuration || 7} Days</span></p>
+                  <p className="confirm-price-display rent">₹{book.rentPrice} <span style={{fontSize: '14px', color: '#64748b', fontWeight: 500}}>/ {book.rentDuration || 7} Days</span></p>
                   <p className="confirm-owner">Owner: {book.owner?.name || book.owner?.username || 'Owner'}</p>
                 </>
               )}

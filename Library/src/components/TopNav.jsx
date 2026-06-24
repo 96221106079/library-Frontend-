@@ -110,7 +110,7 @@ const TopNav = () => {
                 <span style={{
                   position: 'absolute', top: '-4px', right: '-4px',
                   background: 'linear-gradient(135deg, #FF5252, #D50000)',
-                  color: '#fff', fontSize: '10px', fontWeight: '700', minWidth: '18px',
+                  color: '#0f172a', fontSize: '10px', fontWeight: '700', minWidth: '18px',
                   height: '18px', borderRadius: '9px', display: 'flex', alignItems: 'center',
                   justifyContent: 'center', border: '2px solid #060B23',
                   boxShadow: '0 2px 8px rgba(255,82,82,0.4)',
@@ -124,7 +124,7 @@ const TopNav = () => {
                 background: 'linear-gradient(180deg, #0F1635 0%, #151D48 100%)',
                 border: '1px solid rgba(124, 77, 255, 0.12)',
                 borderRadius: '16px',
-                boxShadow: '0 16px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.03)',
+                boxShadow: '0 16px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(0, 0, 0, 0.02)',
                 overflow: 'hidden',
               }}>
                 <div style={{
@@ -132,7 +132,7 @@ const TopNav = () => {
                   borderBottom: '1px solid rgba(124, 77, 255, 0.08)',
                   display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                 }}>
-                  <h3 style={{ margin: 0, fontSize: '14px', fontWeight: '700', color: '#FFFFFF' }}>Notifications</h3>
+                  <h3 style={{ margin: 0, fontSize: '14px', fontWeight: '700', color: '#0f172a' }}>Notifications</h3>
                   <span style={{ fontSize: '11px', color: '#7D86B2', fontWeight: '600' }}>
                     {notifications.length} total
                   </span>
@@ -172,7 +172,7 @@ const TopNav = () => {
             width: '40px', height: '40px', borderRadius: '14px',
             background: 'linear-gradient(135deg, #7C4DFF 0%, #00C2FF 100%)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '15px', fontWeight: '700', color: '#FFFFFF',
+            fontSize: '15px', fontWeight: '700', color: '#0f172a',
             boxShadow: '0 4px 12px rgba(124, 77, 255, 0.3)',
             cursor: 'pointer',
           }}>

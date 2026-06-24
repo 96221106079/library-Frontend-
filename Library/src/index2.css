@@ -8,19 +8,19 @@
   box-sizing: border-box;
 }
 
-/* Root colors - Dark theme */
+/* Root colors - Light theme */
 :root {
-  /* Dark mode colors */
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
-  --bg-accent: #1a1f35;
+  /* Light mode colors */
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F1F5F9;
+  --bg-accent: #E2E8F0;
   
   /* Text colors */
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --text-dark: #64748b;
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-dark: #1E293B;
   
   /* Brand colors */
   --brand-primary: #6366f1;
@@ -141,17 +141,18 @@ input::placeholder, textarea::placeholder {
 }
 
 .glass {
-  background: rgba(30, 41, 59, 0.4);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(148, 163, 184, 0.1);
+  border: 1px solid rgba(226, 232, 240, 0.8);
   border-radius: 12px;
 }
 
 .glass-elevated {
-  background: rgba(30, 41, 59, 0.6);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  border: 1px solid rgba(226, 232, 240, 1);
   border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .gradient-text {

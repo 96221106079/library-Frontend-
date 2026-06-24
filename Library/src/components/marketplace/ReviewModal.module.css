@@ -33,7 +33,7 @@
 }
 
 .modalTitle { font-size: 1.2rem; font-weight: 800; color: #1e293b; margin: 0; }
-.modalSub { font-size: 0.8rem; color: #94a3b8; margin: 2px 0 0; }
+.modalSub { font-size: 0.8rem; color: #64748b; margin: 2px 0 0; }
 
 .closeBtn {
   background: #f1f5f9;
@@ -60,7 +60,7 @@
   padding: 10px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #94a3b8;
+  color: #64748b;
   cursor: pointer;
   border-bottom: 2px solid transparent;
   margin-bottom: -2px;
@@ -83,7 +83,7 @@
 
 .saveBtn {
   background: linear-gradient(135deg, #7c3aed, #6d28d9);
-  color: #fff;
+  color: #0f172a;
   border: none;
   padding: 14px;
   border-radius: 14px;
@@ -99,7 +99,7 @@
 .starFilled { color: #f59e0b; }
 
 .reviewList { display: flex; flex-direction: column; gap: 14px; }
-.emptyReviews { text-align: center; color: #94a3b8; padding: 40px 0; font-size: 0.9rem; }
+.emptyReviews { text-align: center; color: #64748b; padding: 40px 0; font-size: 0.9rem; }
 
 .reviewCard {
   background: #f8fafc;
@@ -118,13 +118,13 @@
 .reviewerAvatar {
   width: 36px; height: 36px;
   background: linear-gradient(135deg, #7c3aed, #6d28d9);
-  color: #fff;
+  color: #0f172a;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
 }
 
 .reviewerName { font-size: 0.85rem; font-weight: 700; color: #1e293b; margin: 0; }
-.reviewDate { margin-left: auto; font-size: 0.72rem; color: #94a3b8; }
+.reviewDate { margin-left: auto; font-size: 0.72rem; color: #64748b; }
 .reviewText { font-size: 0.88rem; color: #374151; line-height: 1.5; margin: 0 0 8px; }
 
 .feedbackChip {
@@ -161,12 +161,12 @@
 
 .borrowBtn {
   background: #3b82f6;
-  color: #fff;
+  color: #0f172a;
   box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
 }
 
 .rentBtn {
   background: #10b981;
-  color: #fff;
+  color: #0f172a;
   box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
 }

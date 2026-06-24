@@ -1,6 +1,6 @@
 const BookSkeleton = () => (
   <div style={{
-    background: 'rgba(30, 41, 59, 0.4)', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.05)',
+    background: 'rgba(30, 41, 59, 0.4)', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.04)',
     overflow: 'hidden', display: 'flex', flexDirection: 'column'
   }}>
     <style>{`
@@ -10,7 +10,7 @@ const BookSkeleton = () => (
         100% { opacity: 0.3; }
       }
       .skel-shimmer {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(0, 0, 0, 0.04);
         animation: pulse 1.5s ease-in-out infinite;
       }
     `}</style>

@@ -113,10 +113,10 @@ const CartPage = () => {
 
               {/* Book Info */}
               <div style={{ flex: 1 }}>
-                <h4 style={{ margin: '0 0 4px 0', color: '#f1f5f9' }}>
+                <h4 style={{ margin: '0 0 4px 0', color: '#0f172a' }}>
                   {item.title}
                 </h4>
-                <p style={{ margin: '0 0 8px 0', color: '#94a3b8', fontSize: '13px' }}>
+                <p style={{ margin: '0 0 8px 0', color: '#64748b', fontSize: '13px' }}>
                   by {item.author}
                 </p>
                 <div style={{
@@ -138,10 +138,10 @@ const CartPage = () => {
                       borderRadius: '4px',
                       border: '1px solid #475569',
                       background: '#1e293b',
-                      color: '#f1f5f9',
+                      color: '#0f172a',
                     }}
                   />
-                  <span style={{ color: '#cbd5e1' }}>
+                  <span style={{ color: '#334155' }}>
                     ₹{item.price} each
                   </span>
                 </div>
@@ -198,8 +198,8 @@ const CartPage = () => {
             paddingBottom: '12px',
             borderBottom: '1px solid rgba(148, 163, 184, 0.1)',
           }}>
-            <span style={{ color: '#cbd5e1' }}>Subtotal</span>
-            <span style={{ color: '#f1f5f9', fontWeight: '600' }}>₹{totalPrice.toFixed(0)}</span>
+            <span style={{ color: '#334155' }}>Subtotal</span>
+            <span style={{ color: '#0f172a', fontWeight: '600' }}>₹{totalPrice.toFixed(0)}</span>
           </div>
 
           <div style={{
@@ -209,7 +209,7 @@ const CartPage = () => {
             paddingBottom: '12px',
             borderBottom: '1px solid rgba(148, 163, 184, 0.1)',
           }}>
-            <span style={{ color: '#cbd5e1' }}>Delivery</span>
+            <span style={{ color: '#334155' }}>Delivery</span>
             <span style={{ color: '#10b981', fontSize: '13px', fontWeight: '600' }}>FREE</span>
           </div>
 

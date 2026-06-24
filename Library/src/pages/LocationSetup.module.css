@@ -39,9 +39,9 @@
 .card {
   width: 100%;
   max-width: 480px;
-  background: rgba(30, 41, 59, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   padding: 40px;
   border-radius: 24px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -83,7 +83,7 @@
 }
 
 .subtitle {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 15px;
   line-height: 1.5;
 }
@@ -101,7 +101,7 @@
 }
 
 .inputGroup label {
-  color: #cbd5e1;
+  color: #334155;
   font-size: 14px;
   font-weight: 500;
   margin-left: 4px;
@@ -110,7 +110,7 @@
 .inputGroup select, 
 .inputGroup textarea {
   background: rgba(15, 23, 42, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   padding: 12px 16px;
   color: #f8fafc;
@@ -140,7 +140,7 @@
 .divider::after {
   content: '';
   flex: 1;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .divider span {
@@ -148,8 +148,8 @@
 }
 
 .locationBtn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px dashed rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px dashed rgba(0, 0, 0, 0.16);
   color: #f8fafc;
   padding: 12px;
   border-radius: 12px;
@@ -163,8 +163,8 @@
 }
 
 .locationBtn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.24);
 }
 
 .locationBtn.success {
@@ -219,7 +219,7 @@
 .spinner {
   width: 18px;
   height: 18px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(0, 0, 0, 0.24);
   border-top-color: white;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -235,6 +235,6 @@
 }
 
 .inputGroup textarea::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.08);
   border-radius: 3px;
 }

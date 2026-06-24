@@ -187,7 +187,7 @@ const SetupPage = () => {
           max-width: 540px;
           background: rgba(30, 41, 59, 0.7);
           backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           border-radius: 32px;
           padding: 48px;
           z-index: 1;
@@ -237,8 +237,8 @@ const SetupPage = () => {
           align-items: center;
           width: 100%;
           padding: 24px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: rgba(0, 0, 0, 0.02);
+          border: 1px solid rgba(0, 0, 0, 0.04);
           border-radius: 20px;
           cursor: pointer;
           text-align: left;
@@ -247,7 +247,7 @@ const SetupPage = () => {
         }
 
         .setup-option-card:hover {
-          background: rgba(255, 255, 255, 0.06);
+          background: rgba(0, 0, 0, 0.05);
           border-color: rgba(99, 102, 241, 0.4);
         }
 
@@ -300,7 +300,7 @@ const SetupPage = () => {
         .spinner-small {
           width: 20px;
           height: 20px;
-          border: 2px solid rgba(255, 255, 255, 0.1);
+          border: 2px solid rgba(0, 0, 0, 0.08);
           border-top-color: white;
           border-radius: 50%;
           animation: spin 0.8s linear infinite;

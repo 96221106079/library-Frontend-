@@ -134,8 +134,8 @@ export const EmptyState = ({ icon = '📚', title = 'No Items', description = ''
       textAlign: 'center',
     }}>
       <div style={{ fontSize: '64px', marginBottom: '16px' }}>{icon}</div>
-      <h3 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '8px', color: '#f1f5f9' }}>{title}</h3>
-      <p style={{ color: '#94a3b8', marginBottom: action ? '24px' : '0', maxWidth: '300px' }}>{description}</p>
+      <h3 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '8px', color: '#0f172a' }}>{title}</h3>
+      <p style={{ color: '#64748b', marginBottom: action ? '24px' : '0', maxWidth: '300px' }}>{description}</p>
       {action && <button style={{
         background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
         color: 'white',
@@ -182,7 +182,7 @@ export const StatusProgress = ({ steps = [], currentStep = 0 }) => {
             </div>
             <span style={{
               fontSize: '11px',
-              color: '#cbd5e1',
+              color: '#334155',
               textAlign: 'center',
               whiteSpace: 'nowrap',
               overflow: 'hidden',

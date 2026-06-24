@@ -61,7 +61,7 @@ const Home = () => {
           <h1 style={{ fontSize: '28px', fontWeight: '800', margin: 0 }}>
             {localStorage.getItem("userLocation") && !localStorage.getItem("searchMode") ? "Books Near You" : "Marketplace"}
           </h1>
-          <p style={{ color: '#94a3b8', margin: '4px 0 0' }}>
+          <p style={{ color: '#64748b', margin: '4px 0 0' }}>
             {localStorage.getItem("userLocation") && !localStorage.getItem("searchMode") 
               ? "Showing books within 10km of your location" 
               : "Explore books from all around the world"}
@@ -95,9 +95,9 @@ const Home = () => {
       ) : books.length === 0 ? (
         <div style={{ 
           padding: '80px 20px', 
-          background: 'rgba(255,255,255,0.02)', 
+          background: 'rgba(0, 0, 0, 0.02)', 
           borderRadius: '32px', 
-          border: '1px solid rgba(255,255,255,0.05)',
+          border: '1px solid rgba(0, 0, 0, 0.04)',
           textAlign: 'center'
         }}>
           <div style={{ fontSize: '48px', marginBottom: '16px' }}>📦</div>

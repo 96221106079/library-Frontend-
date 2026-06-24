@@ -78,15 +78,15 @@ const BookCardDetailed = ({ book, onUpdate, showToast, onUpdateModal }) => {
         <div className={styles.bookInfo}>
           <h2 className={styles.bookTitle}>{book.title}</h2>
           <p className={styles.bookAuthor}>by {book.author}</p>
-          <div className={styles.bookPrice} style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+          <div className={styles.bookPrice}>
             {book.buyPrice > 0 && (
-              <span style={{ fontSize: "14px", color: "#10b981", fontWeight: "700" }}>Buy: ₹{book.buyPrice}</span>
+              <span style={{ fontSize: "13px", color: "#34d399", fontWeight: "700" }}>Buy: ₹{book.buyPrice}</span>
             )}
             {book.rentPrice > 0 && (
-              <span style={{ fontSize: "14px", color: "#6366f1", fontWeight: "700" }}>Rent: ₹{book.rentPrice}/wk</span>
+              <span style={{ fontSize: "13px", color: "#a5b4fc", fontWeight: "700" }}>Rent: ₹{book.rentPrice}/wk</span>
             )}
             {!(book.buyPrice > 0) && !(book.rentPrice > 0) && (
-              <span style={{ fontSize: "12px", color: "#94a3b8" }}>₹{book.buyPrice || "Price Not Available"}</span>
+              <span style={{ fontSize: "12px", color: "#64748b" }}>Price Not Available</span>
             )}
           </div>
           <div className={`${styles.statusBadge} ${styles[book.status] || styles.defaultStatus}`}>

@@ -21,12 +21,12 @@
   background: rgba(15, 23, 42, 0.7);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 24px;
   width: 100%;
   max-width: 900px;
   max-height: 90vh;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(0, 0, 0, 0.08);
   position: relative;
   overflow-y: auto;
   animation: slideUpModal 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -36,9 +36,9 @@
   position: absolute;
   top: 24px;
   right: 24px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.04);
   border: none;
-  color: #ffffff;
+  color: #0f172a;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -52,7 +52,7 @@
 }
 
 .modal-close-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.12);
   transform: rotate(90deg);
 }
 
@@ -107,14 +107,14 @@
 .modal-title {
   font-size: 32px;
   font-weight: 800;
-  color: #ffffff;
+  color: #0f172a;
   margin: 0 0 8px 0;
   line-height: 1.2;
 }
 
 .modal-author {
   font-size: 16px;
-  color: #94a3b8;
+  color: #64748b;
   margin: 0 0 20px 0;
   font-weight: 500;
 }
@@ -129,8 +129,8 @@
 
 .modal-tag {
   font-size: 12px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #cbd5e1;
+  background: rgba(0, 0, 0, 0.05);
+  color: #334155;
   padding: 6px 14px;
   border-radius: 20px;
   font-weight: 600;
@@ -164,8 +164,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 24px;
@@ -223,7 +223,7 @@
 .btn-modal-buy {
   flex: 1;
   background: #10b981;
-  color: #ffffff;
+  color: #0f172a;
   border: none;
   border-radius: 12px;
   padding: 16px;
@@ -245,7 +245,7 @@
 .btn-modal-rent {
   flex: 1;
   background: #6366f1;
-  color: #ffffff;
+  color: #0f172a;
   border: none;
   border-radius: 12px;
   padding: 16px;
@@ -267,7 +267,7 @@
 /* Tabs Section */
 .modal-tabs-header {
   display: flex;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   margin-bottom: 20px;
 }
 
@@ -275,7 +275,7 @@
   padding: 10px 20px;
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -284,7 +284,7 @@
 }
 
 .modal-tab-btn:hover {
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .modal-tab-btn.active {
@@ -298,10 +298,10 @@
 
 /* Reviews Styles */
 .review-form {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.02);
   padding: 20px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   margin-bottom: 24px;
 }
 
@@ -316,9 +316,9 @@
   height: 80px;
   margin-top: 16px;
   background: rgba(15, 23, 42, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 8px;
-  color: #fff;
+  color: #0f172a;
   padding: 12px;
   outline: none;
   font-family: inherit;
@@ -336,7 +336,7 @@
   border-radius: 8px;
   border: none;
   background: #6366f1;
-  color: #fff;
+  color: #0f172a;
   font-weight: 700;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -352,7 +352,7 @@
 }
 
 .review-item {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   padding-bottom: 16px;
   margin-bottom: 16px;
 }
@@ -373,7 +373,7 @@
 .review-text {
   margin: 0;
   font-size: 14px;
-  color: #cbd5e1;
+  color: #334155;
   line-height: 1.5;
 }
 
@@ -396,8 +396,8 @@
 .confirm-card {
   max-width: 420px;
   width: 100%;
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
   padding: 32px;
   text-align: center;
@@ -408,7 +408,7 @@
   font-size: 24px;
   font-weight: 800;
   margin-bottom: 12px;
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .confirm-book-title {
@@ -434,7 +434,7 @@
 
 .confirm-owner {
   font-size: 14px;
-  color: #94a3b8;
+  color: #64748b;
   margin-bottom: 32px;
 }
 
@@ -445,18 +445,18 @@
 
 .btn-confirm-cancel {
   flex: 1;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   padding: 14px;
-  color: #ffffff;
+  color: #0f172a;
   font-weight: 700;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .btn-confirm-cancel:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.12);
 }
 
 .btn-confirm-action {
@@ -465,7 +465,7 @@
   border: none;
   border-radius: 12px;
   padding: 14px;
-  color: #ffffff;
+  color: #0f172a;
   font-weight: 800;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;

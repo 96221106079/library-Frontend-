@@ -113,75 +113,95 @@ const LiveTrackingModal = ({ requestId, role, book, initialLocations, onClose })
 
     socket.on("location-updated", handleLocationUpdate);
 
-    // Periodic Location Push (Every 5 seconds as requested)
-    const pushLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (pos) => {
-            const { latitude, longitude } = pos.coords;
-            const loc = { lat: latitude, lng: longitude };
-            setMyLocation(loc);
-            socket.emit("update-location", { requestId, role, ...loc });
-          },
-          (err) => console.error("Periodic Geoloc Error:", err),
-          { enableHighAccuracy: true }
-        );
-      }
+    return () => {
+      socket.off("location-updated", handleLocationUpdate);
     };
+  }, [requestId, role, otherRole]);
 
-    const intervalId = setInterval(pushLocation, 5000);
-    pushLocation(); // Initial push
+  const [isTracking, setIsTracking] = useState(false);
+  const watchIdRef = useRef(null);
+  const intervalIdRef = useRef(null);
 
-    // Watch position for smoother movement
-    let watchId;
-    if (navigator.geolocation) {
-      watchId = navigator.geolocation.watchPosition(
+  const startTracking = () => {
+    setError("");
+    if (!navigator.geolocation) {
+      setError("Geolocation not supported by browser.");
+      return;
+    }
+    
+    setIsTracking(true);
+
+    const pushLocation = () => {
+      navigator.geolocation.getCurrentPosition(
         (pos) => {
           const { latitude, longitude } = pos.coords;
           const loc = { lat: latitude, lng: longitude };
           setMyLocation(loc);
           socket.emit("update-location", { requestId, role, ...loc });
         },
-        (err) => {
-          setError("Location access denied. Please enable GPS.");
-          console.error(err);
-        },
-        { enableHighAccuracy: true, distanceFilter: 5 }
+        (err) => console.error("Periodic Geoloc Error:", err),
+        { enableHighAccuracy: true }
       );
-    } else {
-      setError("Geolocation not supported by browser.");
-    }
-
-    return () => {
-      socket.off("location-updated", handleLocationUpdate);
-      if (watchId) navigator.geolocation.clearWatch(watchId);
-      clearInterval(intervalId);
     };
-  }, [requestId, role, otherRole]);
+
+    intervalIdRef.current = setInterval(pushLocation, 5000);
+    pushLocation();
+
+    watchIdRef.current = navigator.geolocation.watchPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        const loc = { lat: latitude, lng: longitude };
+        setMyLocation(loc);
+        socket.emit("update-location", { requestId, role, ...loc });
+      },
+      (err) => {
+        setError("Location access denied. Tracking stopped.");
+        stopTracking();
+      },
+      { enableHighAccuracy: true, distanceFilter: 5 }
+    );
+  };
+
+  const stopTracking = () => {
+    setIsTracking(false);
+    if (watchIdRef.current) navigator.geolocation.clearWatch(watchIdRef.current);
+    if (intervalIdRef.current) clearInterval(intervalIdRef.current);
+  };
+
+  useEffect(() => {
+    return stopTracking;
+  }, []);
 
   const points = [myLocation, otherLocation].filter(p => p !== null);
 
   return (
     <div style={{
-      position: "fixed", inset: 0, background: "rgba(15, 23, 42, 0.9)",
+      position: "fixed", inset: 0, background: "#f8fafc",
       backdropFilter: "blur(12px)", zIndex: 99999, display: "flex", 
       alignItems: "center", justifyContent: "center", padding: "20px"
     }}>
       <div style={{
         width: "100%", maxWidth: "900px", height: "80vh", background: "#1e293b",
         borderRadius: "32px", overflow: "hidden", display: "flex", flexDirection: "column",
-        boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5)", border: "1px solid rgba(255,255,255,0.1)"
+        boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5)", border: "1px solid rgba(0, 0, 0, 0.08)"
       }}>
         {/* Header */}
-        <div style={{ padding: "20px 24px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ padding: "20px 24px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(0, 0, 0, 0.04)" }}>
           <div>
-            <h3 style={{ margin: 0, color: "#fff", fontSize: "18px", fontWeight: 800 }}>Live Handover Tracking</h3>
-            <p style={{ margin: "4px 0 0", color: "#94a3b8", fontSize: "13px" }}>Tracking {isOwner ? "Borrower" : "Owner"} for "{book?.title}"</p>
+            <h3 style={{ margin: 0, color: "#0f172a", fontSize: "18px", fontWeight: 800 }}>Live Handover Tracking</h3>
+            <p style={{ margin: "4px 0 0", color: "#64748b", fontSize: "13px" }}>Tracking {isOwner ? "Borrower" : "Owner"} for "{book?.title}"</p>
           </div>
-          <button onClick={onClose} style={{
-            background: "rgba(255,255,255,0.05)", border: "none", color: "#fff",
-            padding: "8px 16px", borderRadius: "12px", fontWeight: 700, cursor: "pointer"
-          }}>Close</button>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            {!isTracking ? (
+              <button onClick={startTracking} style={{ background: "#10b981", border: "none", color: "white", padding: "8px 16px", borderRadius: "12px", fontWeight: 700, cursor: "pointer" }}>Start Sharing Location</button>
+            ) : (
+              <button onClick={stopTracking} style={{ background: "#ef4444", border: "none", color: "white", padding: "8px 16px", borderRadius: "12px", fontWeight: 700, cursor: "pointer" }}>Stop Sharing</button>
+            )}
+            <button onClick={onClose} style={{
+              background: "rgba(0, 0, 0, 0.04)", border: "none", color: "#0f172a",
+              padding: "8px 16px", borderRadius: "12px", fontWeight: 700, cursor: "pointer"
+            }}>Close</button>
+          </div>
         </div>
 
         {/* Map Area */}
@@ -224,20 +244,20 @@ const LiveTrackingModal = ({ requestId, role, book, initialLocations, onClose })
           {routeInfo && (
             <div style={{
               position: "absolute", top: "20px", right: "20px",
-              background: "rgba(15, 23, 42, 0.9)", backdropFilter: "blur(12px)", 
+              background: "#f8fafc", backdropFilter: "blur(12px)", 
               padding: "16px", borderRadius: "20px", zIndex: 1000,
-              border: "1px solid rgba(255,255,255,0.1)", color: "#fff",
+              border: "1px solid rgba(0, 0, 0, 0.08)", color: "#0f172a",
               boxShadow: "0 10px 25px rgba(0,0,0,0.5)", minWidth: "140px"
             }}>
-              <div style={{ fontSize: "11px", color: "#94a3b8", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "8px" }}>Live Route</div>
+              <div style={{ fontSize: "11px", color: "#64748b", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "8px" }}>Live Route</div>
               <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                 <div>
-                  <div style={{ fontSize: "13px", color: "#94a3b8" }}>Distance</div>
+                  <div style={{ fontSize: "13px", color: "#64748b" }}>Distance</div>
                   <div style={{ fontSize: "18px", fontWeight: 800, color: "#6366f1" }}>{routeInfo.distance} km</div>
                 </div>
-                <div style={{ height: "1px", background: "rgba(255,255,255,0.05)" }}></div>
+                <div style={{ height: "1px", background: "rgba(0, 0, 0, 0.04)" }}></div>
                 <div>
-                  <div style={{ fontSize: "13px", color: "#94a3b8" }}>Travel Time</div>
+                  <div style={{ fontSize: "13px", color: "#64748b" }}>Travel Time</div>
                   <div style={{ fontSize: "18px", fontWeight: 800, color: "#10b981" }}>{routeInfo.time} mins</div>
                 </div>
               </div>
@@ -248,8 +268,8 @@ const LiveTrackingModal = ({ requestId, role, book, initialLocations, onClose })
           {error && (
             <div style={{
               position: "absolute", top: "20px", left: "50%", transform: "translateX(-50%)",
-              background: "#ef4444", color: "#fff", padding: "10px 20px", borderRadius: "12px",
-              zIndex: 1000, fontWeight: 700, fontSize: "13px", boxShadow: "0 4px 12px rgba(0,0,0,0.2)"
+              background: "#ef4444", color: "#0f172a", padding: "10px 20px", borderRadius: "12px",
+              zIndex: 1000, fontWeight: 700, fontSize: "13px", boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
             }}>
               ⚠️ {error}
             </div>
@@ -258,9 +278,9 @@ const LiveTrackingModal = ({ requestId, role, book, initialLocations, onClose })
           {!otherLocation && !error && (
             <div style={{
               position: "absolute", bottom: "30px", left: "50%", transform: "translateX(-50%)",
-              background: "rgba(15, 23, 42, 0.85)", backdropFilter: "blur(12px)", color: "#fff", 
+              background: "#f8fafc", backdropFilter: "blur(12px)", color: "#0f172a", 
               padding: "16px 32px", borderRadius: "100px", zIndex: 1000, fontSize: "14px",
-              border: "1px solid rgba(255,255,255,0.15)", display: "flex", alignItems: "center", gap: "12px",
+              border: "1px solid rgba(0, 0, 0, 0.12)", display: "flex", alignItems: "center", gap: "12px",
               boxShadow: "0 20px 40px rgba(0,0,0,0.4)", whiteSpace: "nowrap"
             }}>
               <div className="pulse-dot"></div>
@@ -270,12 +290,12 @@ const LiveTrackingModal = ({ requestId, role, book, initialLocations, onClose })
         </div>
 
         {/* Legend */}
-        <div style={{ padding: "16px 24px", display: "flex", gap: "24px", background: "rgba(0,0,0,0.2)" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "#fff", fontSize: "14px" }}>
+        <div style={{ padding: "16px 24px", display: "flex", gap: "24px", background: "rgba(0,0,0,0.05)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "#0f172a", fontSize: "14px" }}>
             <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#6366f1" }}></div>
             <span>Owner</span>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "#fff", fontSize: "14px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "#0f172a", fontSize: "14px" }}>
             <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#10b981" }}></div>
             <span>Borrower</span>
           </div>

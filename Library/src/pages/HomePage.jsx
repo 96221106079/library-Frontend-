@@ -38,52 +38,46 @@ const HomePage = () => {
     const [position, setPosition] = useState(null);
     const [errorMsg, setErrorMsg] = useState("");
     
-    // Data fetching states
     const [books, setBooks] = useState([]);
     const [libraries, setLibraries] = useState([]);
     const [loadingData, setLoadingData] = useState(false);
 
-    // Modal state
     const [modal, setModal] = useState({ isOpen: false, book: null, type: "" });
 
     const markerRef = useRef(null);
 
-    // 1. Center map on user location on load
     useEffect(() => {
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(
-                (pos) => {
-                    setPosition([pos.coords.latitude, pos.coords.longitude]);
-                },
-                (err) => {
-                    setErrorMsg("Location access denied or unavailable. Defaulting to Bangalore.");
-                    setPosition([12.9716, 77.5946]); // Bangalore default
-                }
-            );
+        const userInfo = JSON.parse(localStorage.getItem("user") || "{}");
+        if (userInfo.location?.coordinates && userInfo.location.coordinates.length === 2) {
+            setPosition([userInfo.location.coordinates[1], userInfo.location.coordinates[0]]);
         } else {
-            setErrorMsg("Geolocation is not supported by your browser. Defaulting to Bangalore.");
-            setPosition([12.9716, 77.5946]); // Bangalore default
+            setPosition([12.9716, 77.5946]);
         }
     }, []);
 
-    // 2. Fetch nearby libraries and books when position changes
+    const requestLocation = () => {
+        setErrorMsg("");
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (pos) => setPosition([pos.coords.latitude, pos.coords.longitude]),
+                () => setErrorMsg("Location access denied. Please use the map to find books manually.")
+            );
+        } else {
+            setErrorMsg("Geolocation is not supported by your browser.");
+        }
+    };
+
     useEffect(() => {
         if (position) {
             setLoadingData(true);
             const [lat, lng] = position;
-            
             Promise.all([
                 booksAPI.getAll(),
                 libraryAPI.getNearby(lat, lng, 10)
             ])
             .then(([booksRes, libsRes]) => {
                 if (booksRes.data.success) {
-                    // Provide a default distance label for standard books since getAll doesn't include it
-                    const allBooks = (booksRes.data.books || []).map(b => ({
-                        ...b,
-                        distanceLabel: 'Available'
-                    }));
-                    setBooks(allBooks);
+                    setBooks((booksRes.data.books || []).map(b => ({ ...b, distanceLabel: 'Available' })));
                 }
                 if (libsRes.data.success) {
                     setLibraries(libsRes.data.libraries || []);
@@ -94,21 +88,17 @@ const HomePage = () => {
         }
     }, [position]);
 
-    // 3. Draggable pin to update latitude & longitude manually
-    const eventHandlers = useMemo(
-        () => ({
-            dragend() {
-                const marker = markerRef.current;
-                if (marker != null) {
-                    const latlng = marker.getLatLng();
-                    setPosition([latlng.lat, latlng.lng]);
-                }
-            },
-        }),
-        [],
-    );
+    const eventHandlers = useMemo(() => ({
+        dragend() {
+            const marker = markerRef.current;
+            if (marker != null) {
+                const latlng = marker.getLatLng();
+                setPosition([latlng.lat, latlng.lng]);
+            }
+        },
+    }), []);
 
-    const handleBuy = (book) => setModal({ isOpen: true, book, type: "buy" });
+    const handleBuy  = (book) => setModal({ isOpen: true, book, type: "buy" });
     const handleRent = (book) => setModal({ isOpen: true, book, type: "rent" });
     const closeModal = () => setModal({ isOpen: false, book: null, type: "" });
 
@@ -116,21 +106,21 @@ const HomePage = () => {
         <div className={styles.pageContainer}>
             <div className={styles.header}>
                 <h1>Discover Readers Around You</h1>
-                <p>📍 You can drag the pin to explore books in other areas.</p>
+                <p>📍 Drag the pin to explore books in other areas</p>
+                <button onClick={requestLocation} className={styles.locationBtn}>
+                    🎯 Use My Location
+                </button>
             </div>
 
-            {/* TOP OF HOMEPAGE: Leaflet Map */}
             <div className={styles.mapWrapper}>
-                {errorMsg && !position ? (
-                    <div className={styles.errorBox}>{errorMsg}</div>
-                ) : position ? (
+                {errorMsg && <div className={styles.errorBanner}>{errorMsg}</div>}
+                {position ? (
                     <MapContainer center={position} zoom={13} className={styles.map}>
                         <TileLayer
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         />
-                        {/* 📍 User location marker & 📌 Draggable pin */}
-                        <Marker 
+                        <Marker
                             draggable={true}
                             eventHandlers={eventHandlers}
                             position={position}
@@ -143,13 +133,12 @@ const HomePage = () => {
                     </MapContainer>
                 ) : (
                     <div className={styles.loadingBox}>
-                        <p>Locating you...</p>
                         <div className={styles.spinner}></div>
+                        <p>Locating you...</p>
                     </div>
                 )}
             </div>
 
-            {/* Bottom section: Content */}
             <div className={styles.contentSection}>
                 <div className={styles.locationTag}>
                     Showing results for: <strong>{position ? `${position[0].toFixed(4)}, ${position[1].toFixed(4)}` : "..."}</strong>
@@ -161,7 +150,6 @@ const HomePage = () => {
                     </div>
                 ) : (
                     <>
-                        {/* Nearby Libraries */}
                         {libraries.length > 0 && (
                             <div className={styles.librarySection}>
                                 <h2 className={styles.sectionTitle}>🏛️ Institutional Libraries Nearby</h2>
@@ -176,7 +164,6 @@ const HomePage = () => {
                             </div>
                         )}
 
-                        {/* All P2P Books */}
                         <h2 className={styles.sectionTitle} style={{ marginTop: libraries.length > 0 ? "2rem" : "0" }}>
                             📚 All Peer-to-Peer Books
                         </h2>
@@ -184,10 +171,10 @@ const HomePage = () => {
                             <div className={styles.productGrid}>
                                 {books.map(book => (
                                     <div key={book._id} className={styles.productWrapper}>
-                                        <BookCard 
-                                            book={book} 
-                                            onBuy={() => handleBuy(book)} 
-                                            onRent={() => handleRent(book)} 
+                                        <BookCard
+                                            book={book}
+                                            onBuy={() => handleBuy(book)}
+                                            onRent={() => handleRent(book)}
                                         />
                                     </div>
                                 ))}
@@ -196,14 +183,16 @@ const HomePage = () => {
                             <div className={styles.emptyState}>
                                 <span className={styles.emptyIcon}>📭</span>
                                 <p>No P2P books found.</p>
-                                <button className={styles.actionBtn} onClick={() => navigate("/add-book")}>Be the first to list a book!</button>
+                                <button className={styles.actionBtn} onClick={() => navigate("/add-book")}>
+                                    Be the first to list a book!
+                                </button>
                             </div>
                         )}
                     </>
                 )}
             </div>
 
-            <BorrowRentModal 
+            <BorrowRentModal
                 isOpen={modal.isOpen}
                 onClose={closeModal}
                 book={modal.book}

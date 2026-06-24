@@ -282,7 +282,7 @@ const LibrarianDashboard = () => {
                         </td>
                         <td className={styles.td}>
                            <strong>{txn.bookId?.title}</strong>
-                           <div style={{fontSize: '11px', color: '#94a3b8'}}>{txn.bookId?.author}</div>
+                           <div style={{fontSize: '11px', color: '#64748b'}}>{txn.bookId?.author}</div>
                         </td>
                         <td className={styles.td}>
                            <span className={styles.statusBadgeSmall}>{txn.status.toUpperCase()}</span>

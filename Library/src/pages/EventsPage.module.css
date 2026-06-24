@@ -5,8 +5,8 @@
 /* ── Container Reset & Setup ── */
 .pageContainer {
   min-height: 100vh;
-  background: #090d16;
-  color: #f8fafc;
+  background: #f8fafc;
+  color: #1e293b;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   padding: 0 0 100px 0; /* Room for bottom nav */
   position: relative;
@@ -18,7 +18,7 @@
   position: absolute;
   width: 450px;
   height: 450px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
   top: -150px;
   right: -50px;
   z-index: 0;
@@ -31,7 +31,7 @@
   position: absolute;
   width: 450px;
   height: 450px;
-  background: radial-gradient(circle, rgba(20, 184, 166, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.05) 0%, transparent 70%);
   top: 400px;
   left: -150px;
   z-index: 0;
@@ -49,8 +49,8 @@
 /* ── Hero Header Banner ── */
 .heroHeader {
   position: relative;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(8, 15, 30, 0.95) 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(238, 242, 255, 0.95) 0%, rgba(224, 231, 255, 1) 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   padding: 80px 24px 60px;
   text-align: center;
   z-index: 1;
@@ -78,14 +78,14 @@
   font-weight: 900;
   margin: 0 0 16px;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .heroDesc {
   font-size: 16px;
-  color: #94a3b8;
+  color: #64748b;
   line-height: 1.6;
   margin: 0 auto 36px;
   max-width: 600px;
@@ -95,14 +95,14 @@
 .searchBarWrapper {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.04);
+  background: #ffffff;
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
   padding: 4px 16px;
   max-width: 600px;
   margin: 0 auto;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -122,7 +122,7 @@
   background: transparent;
   border: none;
   outline: none;
-  color: #ffffff;
+  color: #0f172a;
   padding: 12px 0;
   font-size: 15px;
   font-family: inherit;
@@ -153,11 +153,11 @@
 
 .tabBtn {
   padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.03);
+  background: #ffffff;
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 12px;
-  color: #94a3b8;
+  color: #64748b;
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
@@ -166,16 +166,16 @@
 }
 
 .tabBtn:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #0f172a;
   transform: translateY(-1px);
 }
 
 .activeTabBtn {
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(20, 184, 166, 0.15) 100%);
   border-color: rgba(99, 102, 241, 0.4);
-  color: #ffffff;
+  color: #0f172a;
   box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
 }
 
@@ -208,10 +208,10 @@
 }
 
 .myEventCard {
-  background: rgba(255, 255, 255, 0.03);
+  background: #ffffff;
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -222,7 +222,7 @@
 .myEventCard:hover {
   transform: translateY(-4px);
   border-color: rgba(20, 184, 166, 0.4);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(20, 184, 166, 0.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .myCardBanner {
@@ -238,7 +238,7 @@
   left: 12px;
   background: rgba(15, 23, 42, 0.75);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 11px;
@@ -261,14 +261,14 @@
 
 .myCardTime, .myCardVenue {
   font-size: 13px;
-  color: #94a3b8;
+  color: #64748b;
   margin: 0 0 4px;
 }
 
 .myCardFooter {
   margin-top: auto;
   padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -289,7 +289,7 @@
 
 .leaveBtnMini:hover {
   background: rgba(239, 68, 68, 0.3);
-  color: #ffffff;
+  color: #0f172a;
 }
 
 /* ── Main Discovery Feed ── */
@@ -325,11 +325,11 @@
 
 /* ── Event Card (Premium Glassmorphism) ── */
 .eventCard {
-  background: rgba(15, 23, 42, 0.45);
+  background: #ffffff;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -340,7 +340,7 @@
 .eventCard:hover {
   transform: translateY(-6px);
   border-color: rgba(99, 102, 241, 0.35);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .cardHeader {
@@ -356,7 +356,7 @@
   left: 16px;
   background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   color: #a5b4fc;
   padding: 6px 14px;
   border-radius: 30px;
@@ -394,7 +394,7 @@
 }
 
 .cardLibraryMeta span {
-  color: #f8fafc;
+  color: #1e293b;
   font-weight: 700;
 }
 
@@ -403,12 +403,12 @@
   font-weight: 800;
   margin: 0 0 10px;
   line-height: 1.4;
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .cardDesc {
   font-size: 14px;
-  color: #94a3b8;
+  color: #64748b;
   line-height: 1.5;
   margin: 0 0 16px;
 }
@@ -417,18 +417,18 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.02);
   border-radius: 12px;
   padding: 10px 14px;
   margin-bottom: 16px;
   font-size: 13px;
-  color: #cbd5e1;
+  color: #334155;
 }
 
 .cardFooter {
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -451,8 +451,8 @@
 }
 
 .soldOutTag {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   color: #64748b;
   padding: 6px 14px;
   border-radius: 10px;
@@ -463,7 +463,7 @@
 .joinBtnMini {
   background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
   border: none;
-  color: #ffffff;
+  color: #0f172a;
   padding: 8px 16px;
   border-radius: 10px;
   font-size: 12px;
@@ -530,7 +530,7 @@
   width: calc(100% - 48px);
   margin: 32px 24px 0;
   padding: 24px;
-  background: rgba(99, 102, 241, 0.04);
+  background: #ffffff;
   backdrop-filter: blur(12px);
   border: 1px solid rgba(99, 102, 241, 0.15);
   border-radius: 24px;
@@ -552,19 +552,19 @@
   font-size: 22px;
   font-weight: 800;
   margin: 0 0 4px;
-  color: #a5b4fc;
+  color: #1e293b;
 }
 
 .libPanelHeader p {
   font-size: 14px;
-  color: #94a3b8;
+  color: #64748b;
   margin: 0;
 }
 
 .createEventBtn {
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   border: none;
-  color: #ffffff;
+  color: #0f172a;
   padding: 12px 24px;
   border-radius: 14px;
   font-weight: 700;
@@ -588,8 +588,8 @@
 .organizedRow {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 16px;
   padding: 14px 20px;
   gap: 16px;
@@ -598,8 +598,8 @@
 }
 
 .organizedRow:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
 }
 
 .orgCategory {
@@ -621,7 +621,7 @@
 
 .orgMainInfo strong {
   font-size: 15px;
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .orgMainInfo span {
@@ -632,7 +632,7 @@
 
 .orgAttendees {
   font-size: 13px;
-  color: #cbd5e1;
+  color: #334155;
   font-weight: 600;
 }
 
@@ -650,7 +650,7 @@
 
 .cancelEventBtn:hover {
   background: #ef4444;
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .libEmptyState {
@@ -676,8 +676,8 @@
 }
 
 .detailsModal {
-  background: #0d1321;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 28px;
   width: 100%;
   max-width: 680px;
@@ -692,9 +692,9 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #0f172a;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -708,7 +708,7 @@
 }
 
 .closeBtn:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.12);
   transform: rotate(90deg);
 }
 
@@ -725,7 +725,7 @@
   left: 24px;
   background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   color: #a5b4fc;
   padding: 6px 14px;
   border-radius: 30px;
@@ -740,8 +740,8 @@
   right: 24px;
   background: rgba(20, 184, 166, 0.85);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #0f172a;
   padding: 6px 14px;
   border-radius: 30px;
   font-size: 12px;
@@ -767,12 +767,12 @@
 }
 
 .modalCapacity {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   padding: 4px 12px;
   border-radius: 20px;
   font-weight: 600;
-  color: #e2e8f0;
+  color: #1e293b;
 }
 
 .modalTitle {
@@ -780,12 +780,12 @@
   font-weight: 900;
   margin: 0 0 16px;
   line-height: 1.3;
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .modalDesc {
   font-size: 15px;
-  color: #94a3b8;
+  color: #64748b;
   line-height: 1.6;
   margin: 0 0 24px;
 }
@@ -798,24 +798,24 @@
 }
 
 .specBox {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 16px;
   padding: 14px;
 }
 
 .attendeesListSection {
   margin-bottom: 24px;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.02);
   border-radius: 16px;
   padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .attendeesTitle {
   font-size: 14px;
   font-weight: 800;
-  color: #e2e8f0;
+  color: #1e293b;
   margin: 0 0 12px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -851,7 +851,7 @@
 
 .specVal {
   font-size: 14px;
-  color: #f1f5f9;
+  color: #0f172a;
   font-weight: 700;
 }
 
@@ -868,7 +868,7 @@
 .joinBtnFull {
   background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
   border: none;
-  color: #ffffff;
+  color: #0f172a;
   padding: 16px;
   border-radius: 16px;
   font-size: 16px;
@@ -897,7 +897,7 @@
 
 .leaveBtnFull:hover {
   background: rgba(239, 68, 68, 0.2);
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .deleteBtnFull {
@@ -914,12 +914,12 @@
 
 .deleteBtnFull:hover {
   background: rgba(239, 68, 68, 0.15);
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .disabledBtnFull {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   color: #475569;
   padding: 16px;
   border-radius: 16px;
@@ -930,8 +930,8 @@
 
 /* ── Modal 3: Event Creation Modal (Glassmorphism Form) ── */
 .createModal {
-  background: #0d1321;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 28px;
   width: 100%;
   max-width: 600px;
@@ -970,16 +970,16 @@
 .formGroup label {
   font-size: 12px;
   font-weight: 700;
-  color: #cbd5e1;
+  color: #334155;
   text-transform: uppercase;
 }
 
 .formGroup input, .formGroup textarea, .formGroup select {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 12px;
   padding: 12px 16px;
-  color: #ffffff;
+  color: #0f172a;
   font-family: inherit;
   font-size: 14px;
   outline: none;
@@ -988,7 +988,7 @@
 
 .formGroup input:focus, .formGroup textarea:focus, .formGroup select:focus {
   border-color: #6366f1;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .formRow {
@@ -1000,7 +1000,7 @@
 .submitBtnFull {
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   border: none;
-  color: #ffffff;
+  color: #0f172a;
   padding: 16px;
   border-radius: 14px;
   font-size: 15px;
@@ -1024,8 +1024,8 @@
   transform: translateX(-50%);
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.9) 0%, rgba(5, 150, 105, 0.95) 100%);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #0f172a;
   padding: 14px 28px;
   border-radius: 16px;
   font-weight: 700;
@@ -1041,8 +1041,8 @@
   transform: translateX(-50%);
   background: linear-gradient(135deg, rgba(239, 68, 68, 0.9) 0%, rgba(220, 38, 38, 0.95) 100%);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #0f172a;
   padding: 14px 28px;
   border-radius: 16px;
   font-weight: 700;
@@ -1058,13 +1058,13 @@
   align-items: center;
   justify-content: center;
   padding: 60px 0;
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid rgba(255, 255, 255, 0.05);
+  border: 4px solid rgba(0, 0, 0, 0.04);
   border-top-color: #6366f1;
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -1078,8 +1078,8 @@
 .emptyFeed {
   text-align: center;
   padding: 80px 20px;
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px dashed rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.01);
+  border: 1px dashed rgba(0, 0, 0, 0.04);
   border-radius: 24px;
   color: #64748b;
 }
@@ -1092,7 +1092,7 @@
 .emptyFeed h3 {
   font-size: 18px;
   font-weight: 700;
-  color: #ffffff;
+  color: #0f172a;
   margin: 0 0 6px;
 }
 
@@ -1120,7 +1120,7 @@
   overflow: hidden;
   background-size: cover;
   background-position: center;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(0, 0, 0, 0.11);
   position: relative;
 }
 
@@ -1138,11 +1138,12 @@
   margin: 0;
   font-size: 24px;
   font-weight: 800;
+  color: #ffffff;
 }
 
 .featuredOverlay p {
   margin: 0;
-  color: #cbd5e1;
+  color: #e2e8f0;
   font-size: 14px;
 }
 
@@ -1168,7 +1169,7 @@
   height: 10px;
   border-radius: 50%;
   border: none;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.16);
   cursor: pointer;
 }
 
@@ -1184,8 +1185,8 @@
 
 .metricCard {
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #ffffff;
   backdrop-filter: blur(12px);
   padding: 18px;
   display: flex;
@@ -1194,13 +1195,14 @@
 }
 
 .metricCard span {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 13px;
 }
 
 .metricCard strong {
   font-size: 28px;
   line-height: 1;
+  color: #1e293b;
 }
 
 .inlineActions {
@@ -1210,9 +1212,9 @@
 }
 
 .viewBtnMini {
-  background: rgba(255, 255, 255, 0.06);
-  color: #cbd5e1;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.05);
+  color: #334155;
+  border: 1px solid rgba(0, 0, 0, 0.11);
   border-radius: 10px;
   padding: 8px 12px;
   font-size: 12px;
@@ -1222,8 +1224,8 @@
 }
 
 .viewBtnMini:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
+  background: rgba(0, 0, 0, 0.10);
+  color: #0f172a;
 }
 
 /* ── Animation Frames ── */

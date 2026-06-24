@@ -6,13 +6,13 @@ import { EmptyState, Skeleton } from '../components/UI/CoreComponents';
 // ─── Status badge helper ─────────────────────────────────────────────────────
 const StatusBadge = ({ status }) => {
   const map = {
-    available:  { bg: 'rgba(16,185,129,0.15)',  color: '#34d399', label: '✅ Available' },
+    available:  { bg: 'rgba(16,185,129,0.15)',  color: '#10b981', label: '✅ Available' },
     requested:  { bg: 'rgba(245,158,11,0.15)',  color: '#fbbf24', label: '⏳ Requested' },
     borrowed:   { bg: 'rgba(59,130,246,0.15)',  color: '#60a5fa', label: '📦 Borrowed' },
     rented:     { bg: 'rgba(139,92,246,0.15)',  color: '#c084fc', label: '🔑 Rented' },
-    sold:       { bg: 'rgba(100,116,139,0.15)', color: '#94a3b8', label: '✔ Sold' },
+    sold:       { bg: 'rgba(100,116,139,0.15)', color: '#64748b', label: '✔ Sold' },
   };
-  const s = map[status] || { bg: 'rgba(100,116,139,0.15)', color: '#94a3b8', label: status };
+  const s = map[status] || { bg: 'rgba(100,116,139,0.15)', color: '#64748b', label: status };
   return (
     <span style={{
       background: s.bg, color: s.color,
@@ -75,8 +75,8 @@ const EditBookModal = ({ book, onClose, onSaved }) => {
     width: '100%', padding: '10px 14px',
     borderRadius: '10px',
     border: '1px solid rgba(148,163,184,0.15)',
-    background: 'rgba(15,23,42,0.5)',
-    color: '#f1f5f9', fontSize: '14px', outline: 'none',
+    background: '#f8fafc',
+    color: '#0f172a', fontSize: '14px', outline: 'none',
     transition: 'border-color 200ms',
     boxSizing: 'border-box',
   };
@@ -91,7 +91,7 @@ const EditBookModal = ({ book, onClose, onSaved }) => {
     }}>
       <div style={{
         background: 'rgba(18,28,48,0.98)',
-        border: '1px solid rgba(255,255,255,0.08)',
+        border: '1px solid rgba(0, 0, 0, 0.06)',
         borderRadius: '24px',
         padding: '28px',
         width: '100%', maxWidth: '520px',
@@ -101,11 +101,11 @@ const EditBookModal = ({ book, onClose, onSaved }) => {
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
           <div>
-            <h2 style={{ margin: 0, fontSize: '20px', fontWeight: '800', color: '#f1f5f9' }}>✏️ Edit Book</h2>
+            <h2 style={{ margin: 0, fontSize: '20px', fontWeight: '800', color: '#0f172a' }}>✏️ Edit Book</h2>
             <p style={{ margin: '4px 0 0', color: '#64748b', fontSize: '13px' }}>Update your book's details</p>
           </div>
           <button onClick={onClose} style={{
-            background: 'rgba(255,255,255,0.06)', border: 'none',
+            background: 'rgba(0, 0, 0, 0.05)', border: 'none',
             width: '36px', height: '36px', borderRadius: '10px',
             color: '#64748b', cursor: 'pointer', fontSize: '18px',
           }}>✕</button>
@@ -182,8 +182,8 @@ const EditBookModal = ({ book, onClose, onSaved }) => {
             ].map(({ key, label }) => (
               <label key={key} style={{
                 display: 'flex', alignItems: 'center', gap: '8px',
-                background: form[key] ? 'rgba(99,102,241,0.1)' : 'rgba(255,255,255,0.03)',
-                border: `1px solid ${form[key] ? 'rgba(99,102,241,0.3)' : 'rgba(255,255,255,0.08)'}`,
+                background: form[key] ? 'rgba(99,102,241,0.1)' : 'rgba(0, 0, 0, 0.02)',
+                border: `1px solid ${form[key] ? 'rgba(99,102,241,0.3)' : 'rgba(0, 0, 0, 0.06)'}`,
                 borderRadius: '10px', padding: '10px 14px',
                 cursor: 'pointer', flex: 1, transition: 'all 200ms',
               }}>
@@ -202,14 +202,14 @@ const EditBookModal = ({ book, onClose, onSaved }) => {
         <div style={{ display: 'flex', gap: '10px', marginTop: '24px' }}>
           <button onClick={onClose} style={{
             flex: 1, padding: '12px', borderRadius: '12px',
-            background: 'rgba(255,255,255,0.05)', color: '#64748b',
-            border: '1px solid rgba(255,255,255,0.08)', cursor: 'pointer',
+            background: 'rgba(0, 0, 0, 0.04)', color: '#64748b',
+            border: '1px solid rgba(0, 0, 0, 0.06)', cursor: 'pointer',
             fontWeight: '700', fontSize: '14px',
           }}>Cancel</button>
           <button onClick={handleSave} disabled={saving} style={{
             flex: 2, padding: '12px', borderRadius: '12px',
             background: saving ? 'rgba(99,102,241,0.3)' : 'linear-gradient(135deg,#6366f1,#8b5cf6)',
-            color: '#fff', border: 'none', cursor: saving ? 'not-allowed' : 'pointer',
+            color: '#0f172a', border: 'none', cursor: saving ? 'not-allowed' : 'pointer',
             fontWeight: '800', fontSize: '14px',
             boxShadow: saving ? 'none' : '0 6px 20px rgba(99,102,241,0.35)',
           }}>{saving ? 'Saving...' : '✅ Save Changes'}</button>
@@ -260,7 +260,7 @@ const MyBooksPage = () => {
     return (
       <div style={{
         background: 'rgba(18,28,48,0.7)',
-        border: '1px solid rgba(255,255,255,0.08)',
+        border: '1px solid rgba(0, 0, 0, 0.06)',
         borderRadius: '18px', overflow: 'hidden', marginBottom: '14px',
         transition: 'border-color 200ms, box-shadow 200ms',
         boxShadow: isExpanded ? '0 8px 32px rgba(0,0,0,0.3)' : 'none',
@@ -277,15 +277,15 @@ const MyBooksPage = () => {
             style={{ width: '64px', height: '86px', borderRadius: '10px', objectFit: 'cover', flexShrink: 0, boxShadow: '0 4px 12px rgba(0,0,0,0.3)' }}
           />
           <div style={{ flex: 1, minWidth: 0 }}>
-            <h4 style={{ margin: '0 0 3px', color: '#f1f5f9', fontSize: '15px', fontWeight: '800', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <h4 style={{ margin: '0 0 3px', color: '#0f172a', fontSize: '15px', fontWeight: '800', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {book.title}
             </h4>
             <p style={{ margin: '0 0 10px', color: '#64748b', fontSize: '12px' }}>by {book.author}</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
               <StatusBadge status={book.status} />
-              {book.buyPrice  > 0 && <span style={{ background: 'rgba(16,185,129,0.1)',  color: '#34d399', padding: '3px 9px', borderRadius: '8px', fontSize: '11px', fontWeight: '700' }}>₹{book.buyPrice} BUY</span>}
+              {book.buyPrice  > 0 && <span style={{ background: 'rgba(16,185,129,0.1)',  color: '#10b981', padding: '3px 9px', borderRadius: '8px', fontSize: '11px', fontWeight: '700' }}>₹{book.buyPrice} BUY</span>}
               {book.rentPrice > 0 && <span style={{ background: 'rgba(245,158,11,0.1)',  color: '#fbbf24', padding: '3px 9px', borderRadius: '8px', fontSize: '11px', fontWeight: '700' }}>₹{book.rentPrice}/day RENT</span>}
-              <span style={{ background: 'rgba(99,102,241,0.1)', color: '#a5b4fc', padding: '3px 9px', borderRadius: '8px', fontSize: '11px', fontWeight: '700' }}>
+              <span style={{ background: 'rgba(99,102,241,0.1)', color: '#6366f1', padding: '3px 9px', borderRadius: '8px', fontSize: '11px', fontWeight: '700' }}>
                 {book.timesBorrowed || 0} borrows
               </span>
             </div>
@@ -295,7 +295,7 @@ const MyBooksPage = () => {
 
         {/* Expanded panel */}
         {isExpanded && (
-          <div style={{ padding: '16px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <div style={{ padding: '16px', borderTop: '1px solid rgba(0, 0, 0, 0.05)' }}>
             {/* Stats row */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '10px', marginBottom: '16px' }}>
               {[
@@ -303,7 +303,7 @@ const MyBooksPage = () => {
                 { label: 'Rating',         value: book.averageRating?.toFixed(1) || '—', color: '#10b981' },
                 { label: 'Status',         value: book.status?.toUpperCase(),            color: '#f59e0b' },
               ].map(stat => (
-                <div key={stat.label} style={{ background: 'rgba(15,23,42,0.5)', padding: '12px', borderRadius: '12px', textAlign: 'center' }}>
+                <div key={stat.label} style={{ background: '#f8fafc', padding: '12px', borderRadius: '12px', textAlign: 'center' }}>
                   <p style={{ margin: '0 0 4px', color: '#475569', fontSize: '10px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{stat.label}</p>
                   <p style={{ margin: 0, color: stat.color, fontSize: '16px', fontWeight: '900' }}>{stat.value}</p>
                 </div>
@@ -318,7 +318,7 @@ const MyBooksPage = () => {
                 style={{
                   flex: 1, padding: '11px', borderRadius: '10px', fontWeight: '700',
                   background: 'rgba(99,102,241,0.12)',
-                  color: '#a5b4fc',
+                  color: '#6366f1',
                   border: '1px solid rgba(99,102,241,0.25)',
                   cursor: 'pointer', fontSize: '13px',
                   transition: 'all 200ms',
@@ -351,14 +351,14 @@ const MyBooksPage = () => {
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px' }}>
         <div>
-          <h1 style={{ fontSize: '24px', fontWeight: '900', margin: '0 0 4px', color: '#f1f5f9', letterSpacing: '-0.03em' }}>📚 My Books</h1>
+          <h1 style={{ fontSize: '24px', fontWeight: '900', margin: '0 0 4px', color: '#0f172a', letterSpacing: '-0.03em' }}>📚 My Books</h1>
           <p style={{ margin: 0, color: '#64748b', fontSize: '13px' }}>Manage your collection • {myBooks.length} book{myBooks.length !== 1 ? 's' : ''}</p>
         </div>
         <button
           onClick={() => navigate('/add-book')}
           style={{
             background: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
-            color: '#fff', padding: '10px 20px', borderRadius: '12px',
+            color: '#0f172a', padding: '10px 20px', borderRadius: '12px',
             border: 'none', fontWeight: '700', cursor: 'pointer', fontSize: '14px',
             boxShadow: '0 6px 20px rgba(99,102,241,0.35)',
           }}
@@ -366,7 +366,7 @@ const MyBooksPage = () => {
       </div>
 
       {/* Divider */}
-      <div style={{ height: '1px', background: 'rgba(255,255,255,0.05)', marginBottom: '20px' }} />
+      <div style={{ height: '1px', background: 'rgba(0, 0, 0, 0.04)', marginBottom: '20px' }} />
 
       {/* Content */}
       {loading ? (

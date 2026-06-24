@@ -8,25 +8,14 @@ const useSocketTracking = (bookId, isOwner) => {
   const [remoteLocation, setRemoteLocation] = useState(null);
   const watchIdRef = useRef(null);
 
+  const [isTracking, setIsTracking] = useState(false);
+
   useEffect(() => {
     socketRef.current = io(SOCKET_URL);
-
     socketRef.current.emit("join-tracking", bookId);
 
-    if (isOwner) {
-      // Owner: Start watching and broadcasting location
-      if (navigator.geolocation) {
-        watchIdRef.current = navigator.geolocation.watchPosition(
-          (pos) => {
-            const { latitude: lat, longitude: lng } = pos.coords;
-            socketRef.current.emit("update-location", { bookId, lat, lng });
-          },
-          (err) => console.error("Geolocation watch error:", err),
-          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-        );
-      }
-    } else {
-      // Borrower: Listen for updates
+    // Borrower: Listen for updates
+    if (!isOwner) {
       socketRef.current.on("location-updated", (data) => {
         setRemoteLocation(data);
       });
@@ -42,7 +31,33 @@ const useSocketTracking = (bookId, isOwner) => {
     };
   }, [bookId, isOwner]);
 
-  return { remoteLocation };
+  const startTracking = () => {
+    if (!isOwner || !navigator.geolocation) return;
+    setIsTracking(true);
+    watchIdRef.current = navigator.geolocation.watchPosition(
+      (pos) => {
+        const { latitude: lat, longitude: lng } = pos.coords;
+        if (socketRef.current) {
+          socketRef.current.emit("update-location", { bookId, lat, lng });
+        }
+      },
+      (err) => {
+        console.error("Geolocation watch error:", err);
+        stopTracking();
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    );
+  };
+
+  const stopTracking = () => {
+    setIsTracking(false);
+    if (watchIdRef.current) {
+      navigator.geolocation.clearWatch(watchIdRef.current);
+      watchIdRef.current = null;
+    }
+  };
+
+  return { remoteLocation, startTracking, stopTracking, isTracking };
 };
 
 export default useSocketTracking;

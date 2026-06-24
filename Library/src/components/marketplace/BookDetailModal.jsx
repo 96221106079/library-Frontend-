@@ -132,13 +132,13 @@ const BookDetailModal = ({ book, onClose, onActionComplete, initialAction }) => 
 
   const modalStyle = {
     background: '#0f172a', width: '100%', maxWidth: '900px', maxHeight: '90vh',
-    borderRadius: '24px', border: '1px solid rgba(255,255,255,0.1)',
+    borderRadius: '24px', border: '1px solid rgba(0, 0, 0, 0.08)',
     position: 'relative', overflowY: 'auto', display: 'flex', flexDirection: 'column'
   };
 
   const closeBtnStyle = {
-    position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.05)',
-    border: 'none', color: '#fff', width: '36px', height: '36px', borderRadius: '50%',
+    position: 'absolute', top: '20px', right: '20px', background: 'rgba(0, 0, 0, 0.04)',
+    border: 'none', color: '#0f172a', width: '36px', height: '36px', borderRadius: '50%',
     cursor: 'pointer', zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center'
   };
 
@@ -213,7 +213,7 @@ const BookDetailModal = ({ book, onClose, onActionComplete, initialAction }) => 
                     <button
                       style={{ flex: '1 1 200px', padding: '12px', borderRadius: '12px', border: 'none',
                         background: isAvail ? 'linear-gradient(135deg,#10b981,#059669)' : '#1e293b',
-                        color: '#fff', fontWeight: '700',
+                        color: '#0f172a', fontWeight: '700',
                         cursor: isAvail ? 'pointer' : 'not-allowed',
                         opacity: isAvail ? 1 : 0.5, transition: 'all 0.2s',
                         boxShadow: isAvail ? '0 4px 12px rgba(16,185,129,0.4)' : 'none',
@@ -250,14 +250,14 @@ const BookDetailModal = ({ book, onClose, onActionComplete, initialAction }) => 
           <div style={rightColStyle}>
             <div style={{ marginBottom: '30px' }}>
               <h1 style={{ fontSize: '32px', margin: '0 0 8px', fontWeight: '800' }}>{book.title}</h1>
-              <p style={{ fontSize: '16px', color: '#94a3b8', margin: '0 0 16px' }}>by {book.author}</p>
+              <p style={{ fontSize: '16px', color: '#64748b', margin: '0 0 16px' }}>by {book.author}</p>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <span style={{ padding: '4px 12px', background: 'rgba(255,255,255,0.05)', borderRadius: '20px', fontSize: '13px' }}>📂 {book.category}</span>
-                {distanceKm && <span style={{ padding: '4px 12px', background: 'rgba(255,255,255,0.05)', borderRadius: '20px', fontSize: '13px' }}>📍 {distanceKm}km away</span>}
+                <span style={{ padding: '4px 12px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', fontSize: '13px' }}>📂 {book.category}</span>
+                {distanceKm && <span style={{ padding: '4px 12px', background: 'rgba(0, 0, 0, 0.04)', borderRadius: '20px', fontSize: '13px' }}>📍 {distanceKm}km away</span>}
               </div>
             </div>
 
-            <div style={{ display: 'flex', borderBottom: '1px solid rgba(255,255,255,0.05)', marginBottom: '24px' }}>
+            <div style={{ display: 'flex', borderBottom: '1px solid rgba(0, 0, 0, 0.04)', marginBottom: '24px' }}>
               <button style={tabStyle(activeTab === 'details')} onClick={() => setActiveTab('details')}>Details</button>
               <button style={tabStyle(activeTab === 'reviews')} onClick={() => setActiveTab('reviews')}>Reviews ({reviews.length})</button>
             </div>
@@ -292,8 +292,8 @@ const BookDetailModal = ({ book, onClose, onActionComplete, initialAction }) => 
                     </div>
                   </div>
                   
-                  <div style={{ marginTop: '24px', padding: '12px', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                    <p style={{ margin: 0, fontSize: '14px', color: '#cbd5e1', fontStyle: 'italic' }}>
+                  <div style={{ marginTop: '24px', padding: '12px', background: 'rgba(0, 0, 0, 0.02)', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.04)' }}>
+                    <p style={{ margin: 0, fontSize: '14px', color: '#334155', fontStyle: 'italic' }}>
                       {book.availableForBuy && book.availableForRent 
                         ? 'This book is available for purchase and rent.'
                         : book.availableForBuy 
@@ -309,17 +309,17 @@ const BookDetailModal = ({ book, onClose, onActionComplete, initialAction }) => 
               {activeTab === 'reviews' && (
                 <div>
                   {currentUser.id && !isOwner && (
-                    <div style={{ background: 'rgba(255,255,255,0.03)', padding: '20px', borderRadius: '16px', marginBottom: '24px' }}>
+                    <div style={{ background: 'rgba(0, 0, 0, 0.02)', padding: '20px', borderRadius: '16px', marginBottom: '24px' }}>
                       <h4 style={{ margin: '0 0 16px', fontSize: '15px' }}>Share Your Review</h4>
                       <Rating value={newReview.rating} onChange={r => setNewReview({ ...newReview, rating: r })} readOnly={false} size="md" />
                       <textarea
                         placeholder="Share your thoughts..."
                         value={newReview.text}
                         onChange={e => setNewReview({ ...newReview, text: e.target.value })}
-                        style={{ width: '100%', height: '80px', marginTop: '16px', background: 'rgba(15,23,42,0.5)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#fff', padding: '12px', outline: 'none' }}
+                        style={{ width: '100%', height: '80px', marginTop: '16px', background: '#f8fafc', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: '8px', color: '#0f172a', padding: '12px', outline: 'none' }}
                       />
                       <button
-                        style={{ width: '100%', marginTop: '12px', padding: '10px', borderRadius: '8px', border: 'none', background: '#6366f1', color: '#fff', fontWeight: '700', cursor: 'pointer' }}
+                        style={{ width: '100%', marginTop: '12px', padding: '10px', borderRadius: '8px', border: 'none', background: '#6366f1', color: '#0f172a', fontWeight: '700', cursor: 'pointer' }}
                         onClick={handleReviewSubmit}
                         disabled={loading || !newReview.rating}
                       >
@@ -329,12 +329,12 @@ const BookDetailModal = ({ book, onClose, onActionComplete, initialAction }) => 
                   )}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                     {reviews.length > 0 ? reviews.map((r, i) => (
-                      <div key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.03)', paddingBottom: '16px' }}>
+                      <div key={i} style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.02)', paddingBottom: '16px' }}>
                         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '8px' }}>
                           <Rating value={r.rating} readOnly size="sm" />
                           <span style={{ fontSize: '12px', color: '#64748b' }}>{r.user?.name || 'Anonymous'}</span>
                         </div>
-                        <p style={{ margin: 0, fontSize: '14px', color: '#cbd5e1', lineHeight: 1.5 }}>{r.text}</p>
+                        <p style={{ margin: 0, fontSize: '14px', color: '#334155', lineHeight: 1.5 }}>{r.text}</p>
                       </div>
                     )) : <p style={{ color: '#64748b', fontSize: '14px' }}>No reviews yet.</p>}
                   </div>
@@ -347,17 +347,17 @@ const BookDetailModal = ({ book, onClose, onActionComplete, initialAction }) => 
         </div>
 
         {action && (
-          <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,23,42,0.95)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px' }}>
+          <div style={{ position: 'absolute', inset: 0, background: '#f8fafc', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px' }}>
             <div style={{ maxWidth: '400px', textAlign: 'center' }}>
               <h3 style={{ fontSize: '24px', marginBottom: '16px' }}>{action === 'buy' ? 'Buy Book' : 'Rent Book'}</h3>
-              <p style={{ color: '#fff', fontSize: '20px', fontWeight: '700', margin: '0 0 12px' }}>{book.title}</p>
+              <p style={{ color: '#0f172a', fontSize: '20px', fontWeight: '700', margin: '0 0 12px' }}>{book.title}</p>
               
               {action === 'buy' && (
                 <>
                   <p style={{ color: '#10b981', fontSize: '18px', fontWeight: '700', margin: '0 0 8px' }}>
                     Price: ₹{book.buyPrice}
                   </p>
-                  <p style={{ color: '#94a3b8', fontSize: '15px', marginBottom: '30px' }}>
+                  <p style={{ color: '#64748b', fontSize: '15px', marginBottom: '30px' }}>
                     Owner: {book.owner?.name || book.owner?.username || 'Owner'}
                   </p>
                 </>
@@ -368,15 +368,15 @@ const BookDetailModal = ({ book, onClose, onActionComplete, initialAction }) => 
                   <p style={{ color: '#6366f1', fontSize: '18px', fontWeight: '700', margin: '0 0 8px' }}>
                     Rent Price: ₹{book.rentPrice} / {book.rentDuration || 7} Days
                   </p>
-                  <p style={{ color: '#94a3b8', fontSize: '15px', marginBottom: '20px' }}>
+                  <p style={{ color: '#64748b', fontSize: '15px', marginBottom: '20px' }}>
                     Owner: {book.owner?.name || book.owner?.username || 'Owner'}
                   </p>
                 </>
               )}
 
               <div style={{ display: 'flex', gap: '12px' }}>
-                <button onClick={() => setAction(null)} style={{ flex: 1, padding: '12px', borderRadius: '12px', border: 'none', background: 'rgba(255,255,255,0.05)', color: '#fff', cursor: 'pointer' }}>Cancel</button>
-                <button onClick={action === 'buy' ? handleBuy : handleRent} disabled={loading} style={{ flex: 2, padding: '12px', borderRadius: '12px', border: 'none', background: '#6366f1', color: '#fff', fontWeight: '700', cursor: 'pointer' }}>
+                <button onClick={() => setAction(null)} style={{ flex: 1, padding: '12px', borderRadius: '12px', border: 'none', background: 'rgba(0, 0, 0, 0.04)', color: '#0f172a', cursor: 'pointer' }}>Cancel</button>
+                <button onClick={action === 'buy' ? handleBuy : handleRent} disabled={loading} style={{ flex: 2, padding: '12px', borderRadius: '12px', border: 'none', background: '#6366f1', color: '#0f172a', fontWeight: '700', cursor: 'pointer' }}>
                   {loading ? 'Processing...' : 'Confirm'}
                 </button>
               </div>

@@ -89,16 +89,16 @@ const ActivityPage = () => {
           />
 
           <div style={{ flex: 1 }}>
-            <h4 style={{ margin: '0 0 4px 0', color: '#f1f5f9' }}>
+            <h4 style={{ margin: '0 0 4px 0', color: '#0f172a' }}>
               {req.book?.title}
             </h4>
-            <p style={{ margin: '0 0 8px 0', color: '#94a3b8', fontSize: '13px' }}>
+            <p style={{ margin: '0 0 8px 0', color: '#64748b', fontSize: '13px' }}>
               by {req.book?.author}
             </p>
             <div style={{
               display: 'inline-block',
               background: 'rgba(99, 102, 241, 0.2)',
-              color: '#a5b4fc',
+              color: '#6366f1',
               padding: '4px 8px',
               borderRadius: '4px',
               fontSize: '12px',
@@ -109,7 +109,7 @@ const ActivityPage = () => {
           </div>
 
           <div style={{ textAlign: 'right' }}>
-            <p style={{ margin: 0, color: '#cbd5e1', fontSize: '13px' }}>
+            <p style={{ margin: 0, color: '#334155', fontSize: '13px' }}>
               {new Date(req.createdAt).toLocaleDateString()}
             </p>
           </div>
@@ -147,7 +147,7 @@ const ActivityPage = () => {
                   borderRadius: '6px',
                   border: '1px solid #475569',
                   background: '#1e293b',
-                  color: '#f1f5f9',
+                  color: '#0f172a',
                   fontSize: '14px',
                 }}
               />
@@ -277,10 +277,10 @@ const ActivityPage = () => {
         />
 
         <div style={{ flex: 1 }}>
-          <h4 style={{ margin: '0 0 4px 0', color: '#f1f5f9' }}>
+          <h4 style={{ margin: '0 0 4px 0', color: '#0f172a' }}>
             {order.book?.title}
           </h4>
-          <p style={{ margin: '0 0 8px 0', color: '#94a3b8', fontSize: '13px' }}>
+          <p style={{ margin: '0 0 8px 0', color: '#64748b', fontSize: '13px' }}>
             by {order.book?.author}
           </p>
 
@@ -300,10 +300,10 @@ const ActivityPage = () => {
             }}>
               ✓ {order.status.toUpperCase()}
             </span>
-            <span style={{ color: '#cbd5e1', fontSize: '13px' }}>
+            <span style={{ color: '#334155', fontSize: '13px' }}>
               ₹{order.totalPrice}
             </span>
-            <span style={{ color: '#94a3b8', fontSize: '12px' }}>
+            <span style={{ color: '#64748b', fontSize: '12px' }}>
               {new Date(order.createdAt).toLocaleDateString()}
             </span>
           </div>

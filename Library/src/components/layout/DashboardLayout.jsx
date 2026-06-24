@@ -35,7 +35,7 @@ const DashboardLayout = () => {
         <div className={styles.headerActions}>
           {/* Notification Icon */}
           <button style={{ 
-            background: 'rgba(255, 255, 255, 0.05)', 
+            background: 'rgba(0, 0, 0, 0.04)', 
             border: '1px solid var(--card-border)',
             width: '40px', 
             height: '40px', 
@@ -74,7 +74,7 @@ const DashboardLayout = () => {
           <div style={{
             marginTop: 'auto',
             padding: '16px',
-            background: 'rgba(255, 255, 255, 0.03)',
+            background: 'rgba(0, 0, 0, 0.02)',
             borderRadius: '16px',
             border: '1px solid var(--card-border)',
             display: 'flex',

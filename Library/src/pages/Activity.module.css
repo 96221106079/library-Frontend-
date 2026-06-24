@@ -38,10 +38,10 @@
   display: flex;
   gap: 8px;
   margin-bottom: 28px;
-  background: rgba(10, 18, 35, 0.5);
+  background: #f1f5f9;
   padding: 5px;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .tabBtn {
@@ -65,7 +65,7 @@
 .tabBtnActive {
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(168, 85, 247, 0.12));
   color: #a5b4fc;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.07);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(99,102,241,0.2);
 }
 
@@ -99,7 +99,7 @@
 .emptyHero {
   text-align: center;
   padding: 60px 20px;
-  background: rgba(30, 41, 59, 0.3);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px dashed rgba(148, 163, 184, 0.15);
   border-radius: 24px;
   margin-top: 24px;
@@ -115,7 +115,7 @@
   margin: 0 0 8px;
   font-size: 20px;
   font-weight: 800;
-  color: #e2e8f0;
+  color: #1e293b;
 }
 
 .emptyHero p {
@@ -141,13 +141,13 @@
   align-items: center;
   gap: 12px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .sectionHeader h3 {
   font-size: 14px;
   font-weight: 900;
-  color: #fff;
+  color: #0f172a;
   letter-spacing: 2px;
   margin: 0;
   text-transform: uppercase;
@@ -171,10 +171,10 @@
 
 /* ── Card ────────────────────────────────────────────────── */
 .card {
-  background: rgba(18, 28, 48, 0.65);
+  background: #ffffff;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 22px;
   padding: 20px;
   transition: transform 0.28s cubic-bezier(0.4,0,0.2,1),
@@ -220,7 +220,7 @@
   margin: 0 0 4px;
   font-size: 16px;
   font-weight: 800;
-  color: #f1f5f9;
+  color: #0f172a;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -296,7 +296,7 @@
   padding: 4px 10px;
   border-radius: 99px;
   background: rgba(100, 116, 139, 0.15);
-  color: #94a3b8;
+  color: #64748b;
   border: 1px solid rgba(100, 116, 139, 0.25);
   white-space: nowrap;
   flex-shrink: 0;
@@ -332,107 +332,193 @@
   gap: 4px;
 }
 
-/* ── Step Progress Bar ───────────────────────────────────── */
+/* ── Step Progress Bar (Redesigned) ─────────────────────── */
+.stepBarWrapper {
+  position: relative;
+  padding: 20px 0 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* The grey background rail */
+.stepTrack {
+  position: absolute;
+  top: 33px; /* vertically aligns to the centre of the dots */
+  left: calc(50% / var(--step-count, 4));
+  right: calc(50% / var(--step-count, 4));
+  height: 3px;
+  background: rgba(100, 116, 139, 0.15);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+/* Animated gradient fill that grows with progress */
+.stepTrackFill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #6366f1 60%, #a855f7 100%);
+  border-radius: 99px;
+  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
+}
+
+/* Row that holds the step nodes */
 .stepBar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 0;
-  padding: 14px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   overflow-x: auto;
   scrollbar-width: none;
 }
 
-.stepBar::-webkit-scrollbar {
-  display: none;
-}
+.stepBar::-webkit-scrollbar { display: none; }
 
 .stepItem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex: 1;
+  min-width: 52px;
   position: relative;
-  min-width: 54px;
+  z-index: 1;
 }
 
+/* ─ Base dot ─ */
 .stepDot {
-  width: 26px;
-  height: 26px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: rgba(100, 116, 139, 0.15);
-  color: #64748b;
-  font-size: 10px;
-  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 16px;
   position: relative;
-  z-index: 1;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 2px solid transparent;
+  flex-shrink: 0;
 }
 
+/* Pending (future) — muted */
+.stepDotPending {
+  background: rgba(100, 116, 139, 0.1);
+  border-color: rgba(100, 116, 139, 0.2);
+  opacity: 0.5;
+  filter: grayscale(0.5);
+}
+
+/* Active (current step) — vibrant glow + scale */
 .stepDotActive {
-  background: rgba(99, 102, 241, 0.2);
-  color: #a5b4fc;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.15));
   border-color: #6366f1;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12), 0 0 16px rgba(99, 102, 241, 0.4);
-  animation: pulseDot 2s ease-in-out infinite;
+  transform: scale(1.18);
+  box-shadow:
+    0 0 0 4px rgba(99, 102, 241, 0.12),
+    0 0 20px rgba(99, 102, 241, 0.45),
+    0 4px 12px rgba(0,0,0,0.15);
 }
 
-@keyframes pulseDot {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12), 0 0 16px rgba(99, 102, 241, 0.3); }
-  50%       { box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.08), 0 0 24px rgba(99, 102, 241, 0.5); }
-}
-
+/* Done — green check */
 .stepDotDone {
-  background: rgba(16, 185, 129, 0.2);
-  color: #34d399;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.15));
   border-color: #10b981;
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
 }
 
+.stepDotDone:hover {
+  transform: scale(1.08);
+}
+
+/* Ripple ring on the active dot */
+.pulseRing {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(99, 102, 241, 0.5);
+  animation: ringPulse 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ringPulse {
+  0%   { transform: scale(1);    opacity: 0.8; }
+  70%  { transform: scale(1.45); opacity: 0;   }
+  100% { transform: scale(1.45); opacity: 0;   }
+}
+
+.stepIcon {
+  font-size: 15px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkMark {
+  font-size: 15px;
+  font-weight: 900;
+  color: #34d399;
+  line-height: 1;
+}
+
+/* Labels */
 .stepLabel {
   font-size: 9px;
   font-weight: 700;
-  color: #334155;
+  color: #94a3b8;
   text-align: center;
   white-space: nowrap;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 .stepLabelActive {
   color: #818cf8;
+  font-weight: 800;
 }
 
-.stepLine {
-  position: absolute;
-  top: 13px;
-  left: 50%;
-  width: 100%;
-  height: 2px;
-  background: rgba(100, 116, 139, 0.15);
-  z-index: 0;
+.stepLabelDone {
+  color: #34d399;
+  font-weight: 700;
 }
 
-.stepLineDone {
-  background: linear-gradient(90deg, #10b981 0%, rgba(16, 185, 129, 0.3) 100%);
-}
-
+/* Rejected bar with shake animation */
 .rejectedBar {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.22);
   color: #f87171;
   font-size: 12px;
-  font-weight: 700;
-  padding: 8px 14px;
-  border-radius: 10px;
+  font-weight: 800;
+  padding: 10px 16px;
+  border-radius: 12px;
   text-align: center;
+  letter-spacing: 0.5px;
+  animation: shakeOnce 0.5s ease-in-out;
+}
+
+.rejectedIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.18);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+@keyframes shakeOnce {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-4px); }
+  40%       { transform: translateX(4px); }
+  60%       { transform: translateX(-3px); }
+  80%       { transform: translateX(2px); }
 }
 
 /* ── Card Actions ────────────────────────────────────────── */
@@ -473,7 +559,7 @@
 .waitingMeta {
   margin: 0;
   font-size: 12px;
-  color: #94a3b8;
+  color: #64748b;
 }
 
 /* ── Owner Incoming Request ──────────────────────────────── */
@@ -493,7 +579,7 @@
   height: 40px;
   border-radius: 50%;
   background: linear-gradient(135deg, #6366f1, #a855f7);
-  color: #fff;
+  color: #0f172a;
   font-size: 16px;
   font-weight: 900;
   display: flex;
@@ -505,7 +591,7 @@
 .incomingName {
   margin: 0 0 3px;
   font-size: 13px;
-  color: #e2e8f0;
+  color: #1e293b;
   font-weight: 500;
 }
 
@@ -525,7 +611,7 @@
   flex: 1;
   padding: 11px 12px;
   background: linear-gradient(135deg, #10b981, #059669);
-  color: #fff;
+  color: #0f172a;
   border: none;
   border-radius: 12px;
   font-weight: 800;
@@ -575,7 +661,7 @@
 
 .otpShowLabel {
   font-size: 12px;
-  color: #94a3b8;
+  color: #64748b;
   margin: 0 0 14px;
   line-height: 1.5;
 }
@@ -607,7 +693,7 @@
 
 .otpPending {
   font-size: 12px;
-  color: #94a3b8;
+  color: #64748b;
   font-style: italic;
   margin: 0;
 }
@@ -622,7 +708,7 @@
 
 .otpVerifyLabel {
   font-size: 12px;
-  color: #94a3b8;
+  color: #64748b;
   margin: 0 0 12px;
   line-height: 1.5;
 }
@@ -634,11 +720,11 @@
 
 .otpInput {
   flex: 1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   padding: 10px 14px;
-  color: #fff;
+  color: #0f172a;
   text-align: center;
   font-weight: 800;
   font-size: 18px;
@@ -657,7 +743,7 @@
 .verifyBtn {
   padding: 10px 16px;
   background: linear-gradient(135deg, #10b981, #059669);
-  color: #fff;
+  color: #0f172a;
   border: none;
   border-radius: 12px;
   font-weight: 800;
@@ -691,9 +777,9 @@
 .returnBtn {
   width: 100%;
   padding: 11px;
-  background: rgba(255, 255, 255, 0.04);
-  color: #cbd5e1;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.03);
+  color: #334155;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   font-weight: 700;
   font-size: 13px;
@@ -703,8 +789,8 @@
 }
 
 .returnBtn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.16);
 }
 
 /* ── Track Button ────────────────────────────────────────── */

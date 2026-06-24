@@ -64,7 +64,7 @@
   width: 280px;
   flex-shrink: 0;
   border-right: 1px solid var(--card-border);
-  background: rgba(15, 22, 53, 0.4);
+  background: #ffffff;
   backdrop-filter: blur(12px);
   padding: 24px 16px;
   display: flex;
@@ -93,7 +93,7 @@
 
 .navItem:hover {
   color: var(--text-main);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .navItem.active {
@@ -133,7 +133,7 @@
     top: 72px;
     bottom: 0;
     z-index: 40;
-    background: rgba(15, 22, 53, 0.95);
+    background: #ffffff;
     backdrop-filter: blur(24px);
     transition: right 0.3s ease;
   }

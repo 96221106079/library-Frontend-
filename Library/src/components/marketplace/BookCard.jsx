@@ -34,8 +34,8 @@ const BookCard = ({ book, onRefresh, onBuy, onRent }) => {
   const cardStyle = {
     background: '#111b3d',
     borderRadius: '20px',
-    border: '1px solid rgba(255, 255, 255, 0.05)',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), 0 0 10px rgba(99, 102, 241, 0.1)',
+    border: '1px solid rgba(0, 0, 0, 0.04)',
+    boxShadow: '0 8px 32px rgba(0,0,0,0.05), 0 0 10px rgba(99, 102, 241, 0.1)',
     overflow: 'hidden',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
@@ -69,7 +69,7 @@ const BookCard = ({ book, onRefresh, onBuy, onRent }) => {
           <div style={{
             position: 'absolute', top: '12px', left: '12px', background: 'rgba(16, 185, 129, 0.9)',
             backdropFilter: 'blur(4px)', borderRadius: '6px', padding: '4px 10px',
-            fontSize: '11px', fontWeight: '800', color: '#fff', letterSpacing: '0.5px'
+            fontSize: '11px', fontWeight: '800', color: '#0f172a', letterSpacing: '0.5px'
           }}>
             {isAvailable ? "AVAILABLE" : book.status?.toUpperCase()}
           </div>
@@ -77,7 +77,7 @@ const BookCard = ({ book, onRefresh, onBuy, onRent }) => {
           {isOwner && (
             <div style={{
               position: 'absolute', top: '12px', right: '12px', background: 'rgba(99, 102, 241, 0.9)',
-              color: '#fff', fontSize: '11px', fontWeight: '800', padding: '4px 10px', borderRadius: '6px', letterSpacing: '0.5px'
+              color: '#0f172a', fontSize: '11px', fontWeight: '800', padding: '4px 10px', borderRadius: '6px', letterSpacing: '0.5px'
             }}>YOURS</div>
           )}
         </div>
@@ -87,9 +87,9 @@ const BookCard = ({ book, onRefresh, onBuy, onRent }) => {
             <h4 style={{ margin: '0 0 4px', fontSize: '16px', fontWeight: '800', color: '#f8fafc', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {book.title}
             </h4>
-            <p style={{ margin: '0 0 8px', fontSize: '13px', color: '#94a3b8' }}>by {book.author}</p>
+            <p style={{ margin: '0 0 8px', fontSize: '13px', color: '#64748b' }}>by {book.author}</p>
             {book.category && (
-              <span style={{ fontSize: '11px', background: 'rgba(255,255,255,0.08)', color: '#cbd5e1', padding: '4px 10px', borderRadius: '12px', display: 'inline-block', fontWeight: '600' }}>
+              <span style={{ fontSize: '11px', background: 'rgba(0, 0, 0, 0.06)', color: '#334155', padding: '4px 10px', borderRadius: '12px', display: 'inline-block', fontWeight: '600' }}>
                 {book.category}
               </span>
             )}
@@ -103,7 +103,7 @@ const BookCard = ({ book, onRefresh, onBuy, onRent }) => {
                 </span>
               )}
               {book.rentPrice != null && (
-                <span style={{ fontSize: '13px', fontWeight: '700', color: '#cbd5e1' }}>
+                <span style={{ fontSize: '13px', fontWeight: '700', color: '#334155' }}>
                   Rent ₹{book.rentPrice} / {book.rentDuration || 7} Days
                 </span>
               )}
@@ -118,7 +118,7 @@ const BookCard = ({ book, onRefresh, onBuy, onRent }) => {
             {isOwner ? (
               <button style={{
                 flex: 1, padding: '10px', borderRadius: '10px', border: 'none',
-                background: 'rgba(255,255,255,0.05)', color: '#64748b', fontSize: '13px',
+                background: 'rgba(0, 0, 0, 0.04)', color: '#64748b', fontSize: '13px',
                 fontWeight: '700', cursor: 'default'
               }} disabled>
                 My Listing
@@ -165,7 +165,7 @@ const BookCard = ({ book, onRefresh, onBuy, onRent }) => {
             ) : (
               <button style={{
                 flex: 1, padding: '10px', borderRadius: '10px', border: 'none',
-                background: 'rgba(255,255,255,0.05)', color: '#64748b', fontSize: '13px',
+                background: 'rgba(0, 0, 0, 0.04)', color: '#64748b', fontSize: '13px',
                 fontWeight: '700', cursor: 'default'
               }} disabled>
                 {book.status === "requested" || book.status === "REQUESTED" ? "Requested" : "Taken"}

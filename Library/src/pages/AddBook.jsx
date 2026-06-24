@@ -179,7 +179,7 @@ const AddBook = () => {
                 borderRadius: "10px",
                 border: "none",
                 background: "#ea580c",
-                color: "#fff",
+                color: "#0f172a",
                 fontWeight: 700,
                 cursor: "pointer",
               }}
@@ -258,7 +258,7 @@ const AddBook = () => {
                   <p style={{ fontWeight: 600, color: "#475569", margin: 0 }}>
                     Take a Photo or Upload
                   </p>
-                  <p style={{ fontSize: "0.8rem", color: "#94a3b8" }}>JPEG, PNG allowed</p>
+                  <p style={{ fontSize: "0.8rem", color: "#64748b" }}>JPEG, PNG allowed</p>
                 </>
               )}
             </div>
@@ -524,7 +524,7 @@ const AddBook = () => {
                 borderRadius: "12px",
                 border: "none",
                 background: "linear-gradient(135deg, #7c3aed, #4c1d95)",
-                color: "#fff",
+                color: "#0f172a",
                 fontWeight: 700,
                 cursor: loading || !hasSavedLocation ? "not-allowed" : "pointer",
                 boxShadow: "0 4px 15px rgba(124, 58, 237, 0.3)",

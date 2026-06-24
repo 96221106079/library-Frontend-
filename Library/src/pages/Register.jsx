@@ -72,14 +72,11 @@ const Register = () => {
         localStorage.setItem("user", JSON.stringify(response.data.user));
 
         const user = response.data.user;
-        const setupDone = localStorage.getItem("setupDone");
 
         if (user.role === "librarian") {
           navigate("/librarian-dashboard");
-        } else if (setupDone) {
-          navigate("/home");
         } else {
-          navigate("/setup");
+          navigate("/home");
         }
       }
     } catch (error) {
@@ -149,12 +146,8 @@ const Register = () => {
           </button>
         </form>
 
-        <div className="auth-separator" style={{ margin: '20px 0', textAlign: 'center', position: 'relative' }}>
-          <hr style={{ border: '0', borderTop: '1px solid var(--gray-200)' }} />
-          <span style={{ 
-            position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-            background: 'var(--card-bg)', padding: '0 10px', color: 'var(--gray-500)', fontSize: '14px' 
-          }}>OR</span>
+        <div className="auth-separator">
+          <span>OR</span>
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -170,7 +163,7 @@ const Register = () => {
             auto_select
             theme="filled_blue"
             shape="pill"
-            width="100%"
+            width={300}
           />
         </div>
 

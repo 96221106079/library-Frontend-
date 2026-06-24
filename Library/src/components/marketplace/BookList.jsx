@@ -24,7 +24,7 @@ const BookList = ({ title, books, loading, onBorrow, onRent }) => {
   const titleStyle = {
     fontSize: '18px',
     fontWeight: '800',
-    color: '#f1f5f9',
+    color: '#0f172a',
     margin: 0
   };
 
@@ -61,7 +61,7 @@ const BookList = ({ title, books, loading, onBorrow, onRent }) => {
             textAlign: 'center',
             background: 'rgba(30, 41, 59, 0.3)',
             borderRadius: '16px',
-            border: '1px dashed rgba(255, 255, 255, 0.1)'
+            border: '1px dashed rgba(0, 0, 0, 0.08)'
           }}>
             <span style={{ fontSize: '32px', display: 'block', marginBottom: '8px' }}>📭</span>
             <p style={{ color: '#64748b', fontSize: '13px', margin: 0 }}>No books found nearby</p>

@@ -3,11 +3,11 @@ import BookDetailModal from './BookDetailModal';
 
 // Status config
 const STATUS_CONFIG = {
-  available: { color: '#34d399', dot: '#10b981' },
+  available: { color: '#10b981', dot: '#10b981' },
   requested: { color: '#fbbf24', dot: '#f59e0b' },
   borrowed: { color: '#60a5fa', dot: '#3b82f6' },
   rented: { color: '#c084fc', dot: '#8b5cf6' },
-  sold: { color: '#94a3b8', dot: '#64748b' },
+  sold: { color: '#64748b', dot: '#64748b' },
 };
 
 const FALLBACK_COLORS = ['#6366f1', '#10b981', '#f59e0b', '#f43f5e', '#3b82f6', '#ec4899'];
@@ -55,8 +55,8 @@ const BookCard2 = ({ book, onRefresh }) => {
   const cardStyle = {
     background: '#111b3d',
     borderRadius: '20px',
-    border: '1px solid rgba(255, 255, 255, 0.05)',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), 0 0 10px rgba(99, 102, 241, 0.1)',
+    border: '1px solid rgba(0, 0, 0, 0.04)',
+    boxShadow: '0 8px 32px rgba(0,0,0,0.05), 0 0 10px rgba(99, 102, 241, 0.1)',
     overflow: 'hidden',
     cursor: isOwner ? 'default' : 'pointer',
     transition: 'all 0.3s ease',
@@ -98,7 +98,7 @@ const BookCard2 = ({ book, onRefresh }) => {
           <div style={{
             position: 'absolute', top: '12px', left: '12px', background: 'rgba(16, 185, 129, 0.9)',
             backdropFilter: 'blur(4px)', borderRadius: '6px', padding: '4px 10px',
-            fontSize: '11px', fontWeight: '800', color: '#fff', letterSpacing: '0.5px'
+            fontSize: '11px', fontWeight: '800', color: '#0f172a', letterSpacing: '0.5px'
           }}>
             {statusKey.toUpperCase()}
           </div>
@@ -107,7 +107,7 @@ const BookCard2 = ({ book, onRefresh }) => {
           {isOwner && (
             <div style={{
               position: 'absolute', top: '12px', right: '12px', background: 'rgba(99, 102, 241, 0.9)',
-              color: '#fff', fontSize: '11px', fontWeight: '800', padding: '4px 10px', borderRadius: '6px', letterSpacing: '0.5px'
+              color: '#0f172a', fontSize: '11px', fontWeight: '800', padding: '4px 10px', borderRadius: '6px', letterSpacing: '0.5px'
             }}>YOURS</div>
           )}
         </div>
@@ -118,9 +118,9 @@ const BookCard2 = ({ book, onRefresh }) => {
             <h4 style={{ margin: '0 0 4px', fontSize: '16px', fontWeight: '800', color: '#f8fafc', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={book.title}>
               {book.title}
             </h4>
-            <p style={{ margin: '0 0 8px', fontSize: '13px', color: '#94a3b8' }}>{book.author}</p>
+            <p style={{ margin: '0 0 8px', fontSize: '13px', color: '#64748b' }}>{book.author}</p>
             {book.category && (
-              <span style={{ fontSize: '11px', background: 'rgba(255,255,255,0.08)', color: '#cbd5e1', padding: '4px 10px', borderRadius: '12px', display: 'inline-block', fontWeight: '600' }}>
+              <span style={{ fontSize: '11px', background: 'rgba(0, 0, 0, 0.06)', color: '#334155', padding: '4px 10px', borderRadius: '12px', display: 'inline-block', fontWeight: '600' }}>
                 {book.category}
               </span>
             )}
@@ -133,7 +133,7 @@ const BookCard2 = ({ book, onRefresh }) => {
               </span>
             )}
             {book.rentPrice != null && (
-              <span style={{ fontSize: '13px', fontWeight: '700', color: '#cbd5e1' }}>
+              <span style={{ fontSize: '13px', fontWeight: '700', color: '#334155' }}>
                 Rent ₹{book.rentPrice} / {book.rentDuration || 7} Days
               </span>
             )}

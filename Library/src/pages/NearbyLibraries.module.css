@@ -67,11 +67,11 @@
 .libInfo { flex: 1; }
 .libInfo h4 { margin: 0 0 4px; font-size: 1rem; color: #1e293b; }
 .libDist { font-size: 0.75rem; font-weight: 700; color: #8b1874; margin: 0 0 2px; }
-.libAddr { font-size: 0.75rem; color: #94a3b8; margin: 0; }
+.libAddr { font-size: 0.75rem; color: #64748b; margin: 0; }
 
 .viewBooksBtn {
   background: #8b1874;
-  color: #fff;
+  color: #0f172a;
   border: none;
   padding: 10px 16px;
   border-radius: 12px;
@@ -127,7 +127,7 @@
 .emptyState, .emptyBooks {
   text-align: center;
   padding: 60px 20px;
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .emptyIcon { font-size: 3rem; margin-bottom: 16px; display: block; }
@@ -135,7 +135,7 @@
 .overlayLoader {
   position: fixed;
   inset: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.64);
   backdrop-filter: blur(4px);
   z-index: 2000;
   display: flex;

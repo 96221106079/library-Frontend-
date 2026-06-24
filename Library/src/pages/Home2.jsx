@@ -65,7 +65,7 @@ const Home = () => {
   const SkeletonGrid = () => (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '24px' }}>
       {Array.from({ length: 8 }).map((_, i) => (
-        <div key={i} style={{ background: 'rgba(21,29,72,0.6)', borderRadius: '24px', padding: '16px', height: '420px', border: '1px solid rgba(184, 192, 255, 0.1)' }}>
+        <div key={i} style={{ background: '#ffffff', borderRadius: '24px', padding: '16px', height: '420px', border: '1px solid rgba(184, 192, 255, 0.1)' }}>
           <Skeleton width="100%" height="250px" style={{ borderRadius: '12px' }} />
           <Skeleton width="80%" height="20px" style={{ marginTop: '16px' }} />
           <Skeleton width="60%" height="16px" style={{ marginTop: '8px' }} />

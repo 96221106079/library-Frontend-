@@ -21,7 +21,7 @@
 }
 
 .searchIcon {
-  color: #94a3b8;
+  color: #64748b;
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -39,7 +39,7 @@
 }
 
 .input::placeholder {
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .clearBtn {

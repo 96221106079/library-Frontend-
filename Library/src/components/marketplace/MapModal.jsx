@@ -14,7 +14,7 @@ const MapModal = ({ isOpen, onClose, book }) => {
   const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
   const isOwner = currentUser.id === (book.ownerId?._id || book.ownerId || book.owner?._id || book.owner);
 
-  const { remoteLocation } = useSocketTracking(book._id || book.id, isOwner);
+  const { remoteLocation, startTracking, stopTracking, isTracking } = useSocketTracking(book._id || book.id, isOwner);
 
   useEffect(() => {
     if (!isOpen || !book) return;
@@ -91,7 +91,16 @@ const MapModal = ({ isOpen, onClose, book }) => {
             <h3 className={styles.title}>Track Owner</h3>
             <p className={styles.subtitle}>{ownerNameDisplay} · {book.title}</p>
           </div>
-          <button className={styles.closeBtn} onClick={onClose} aria-label="Close map">✕</button>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            {isOwner && (
+              !isTracking ? (
+                <button onClick={startTracking} style={{ background: "#10b981", border: "none", color: "white", padding: "6px 12px", borderRadius: "8px", fontWeight: 700, cursor: "pointer", fontSize: "14px" }}>Start Sharing</button>
+              ) : (
+                <button onClick={stopTracking} style={{ background: "#ef4444", border: "none", color: "white", padding: "6px 12px", borderRadius: "8px", fontWeight: 700, cursor: "pointer", fontSize: "14px" }}>Stop Sharing</button>
+              )
+            )}
+            <button className={styles.closeBtn} onClick={onClose} aria-label="Close map">✕</button>
+          </div>
         </div>
 
         {/* Legend */}

@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import SetupPage from "./pages/SetupPage";
 import LocationSetup from "./pages/LocationSetup";
 import Home from "./pages/Home2";
 import MyBooks from "./pages/MyBooks2";
@@ -25,7 +24,6 @@ function App() {
 
         {/* Auth Required Routes */}
         <Route element={<RoleProtectedRoute />}>
-          <Route path="/setup" element={<SetupPage />} />
           <Route path="/location-setup" element={<LocationSetup />} />
         </Route>
 

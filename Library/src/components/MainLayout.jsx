@@ -11,7 +11,7 @@ const MainLayout = () => {
     <div style={{
       minHeight: '100vh',
       background: 'linear-gradient(160deg, #060B23 0%, #0F1635 40%, #151D48 100%)',
-      color: '#FFFFFF',
+      color: '#0f172a',
     }}>
       {/* Top Navigation */}
       <TopNav />
