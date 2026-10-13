@@ -1,26 +1,3 @@
-// ============================================
-// Libraries.jsx – Enhanced Public Libraries Page
-// ============================================
-//
-// ENHANCEMENTS:
-//  1. Marker Clustering via react-leaflet-cluster
-//  2. Real-time search bar filtering by library name
-//  3. Distance filter chips (1km / 5km / 10km / All)
-//  4. Redesigned cards with OSM badge, hover animation, View on Map & Get Directions
-//  5. FlyTo animation on card click, highlighted selected marker (green icon)
-//  6. Skeleton loaders while data loads
-//  7. No map-drag re-fetching – fetch only on mount & explicit Refresh
-//  8. Fully responsive layout
-//  9. Statistics bar (total / closest / radius)
-// 10. Dark theme matching the Hybrid Library design system
-//
-// PRESERVED from previous version:
-//  – Overpass API retry with exponential backoff + fallback mirror
-//  – AbortController cleanup on unmount
-//  – Safe JSON parsing, 429 handling
-//  – hasFetchedRef StrictMode guard
-//  – Deduplication via Set on OSM element id
-//  – Navigation overlay card with routing
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
@@ -28,7 +5,6 @@ import MarkerClusterGroup from "react-leaflet-cluster";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import styles from "./Libraries.module.css";
-
 // ── Leaflet icon fix ──────────────────────────────────────────────────────────
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
